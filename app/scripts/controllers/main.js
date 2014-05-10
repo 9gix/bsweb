@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('webappApp')
+angular.module('bookshareApp')
   .controller('MainCtrl', function ($scope) {
     $scope.books = [
       {'isbn': '987444432234', 'title': 'Awesome Demo'},

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('webappApp', [
+angular.module('bookshareApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
