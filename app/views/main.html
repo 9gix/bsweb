@@ -6,7 +6,9 @@
 </div>
 
 <div class="main">
-
+  <div ng-repeat="book in books">
+      {{ book.isbn }}  | {{ book.title }}
+  </div>
 </div>
 
 <div class="footer">
