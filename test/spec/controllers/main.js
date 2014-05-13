@@ -3,7 +3,7 @@
 describe('Controller: MainCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('bookshareApp'));
+  beforeEach(module('bswebApp'));
 
   var MainCtrl,
     scope;

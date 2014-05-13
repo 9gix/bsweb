@@ -3,7 +3,7 @@
 describe('Service: Book', function () {
 
   // load the service's module
-  beforeEach(module('webappApp'));
+  beforeEach(module('bswebApp'));
 
   // instantiate service
   var Book;
