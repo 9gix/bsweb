@@ -4,7 +4,7 @@ angular.module('bookshareApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute'
+  'ngRoute',
 ])
   .config(function ($routeProvider) {
     $routeProvider
