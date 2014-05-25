@@ -4,8 +4,11 @@ $icon-font-path: "/bower_components/bootstrap-sass/vendor/assets/fonts/";
 
 /* Space out content a bit */
 body {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 50px;
+}
+
+.main {
+	padding: 20px;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -42,3 +45,5 @@ body {
 .brand__tagline {
     font-style: italic; 
 }
+
+

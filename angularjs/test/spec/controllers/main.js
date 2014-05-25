@@ -15,8 +15,4 @@ describe('Controller: MainCtrl', function () {
       $scope: scope
     });
   }));
-
-  it('should attach some books', function () {
-    expect(scope.books.length).toBe(2);
-  });
 });

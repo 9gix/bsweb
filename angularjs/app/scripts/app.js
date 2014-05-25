@@ -5,6 +5,7 @@ angular.module('bswebApp', [
   'ngResource',
   'ngSanitize',
   'ngRoute',
+  'ui.bootstrap',
 ])
   .config(function ($routeProvider) {
     $routeProvider
