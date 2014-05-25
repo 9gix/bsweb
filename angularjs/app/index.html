@@ -23,8 +23,14 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <!-- Add your site or application content here -->
-    <div class="container" ng-view=""></div>
+    <!-- Top Navigation Bar -->
+    <ng-include src="'views/navbar.html'"></ng-include>
+
+    <!-- Application content -->
+    <div class="container main" ng-view=""></div>
+
+    <!-- Footer -->
+    <ng-include src="'views/footer.html'"></ng-include>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -59,6 +65,7 @@
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/services/BookService.js"></script>
+        <script src="scripts/controllers/navbar.js"></script>
         <!-- endbuild -->
 </body>
 </html>
