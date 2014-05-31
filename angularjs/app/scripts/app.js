@@ -13,6 +13,10 @@ angular.module('bswebApp', [
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+      .when('/search', {
+        templateUrl: 'views/search.html',
+        controller: 'SearchCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

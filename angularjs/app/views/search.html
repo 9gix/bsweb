@@ -1,0 +1,25 @@
+<h1>Search Result</h1>
+
+<ul>
+  <li ng-repeat='book in books'>
+    <div class='media'>
+      <div class='pull-left'>
+        <img class='media-object' ng-src="{{ book.thumbnail }}" />
+      </div>
+      <div class='media-body'>
+        <h2 class='media-heading'>{{ book.title }}
+          <small>{{ book.subtitle }}</small>
+        </h2>
+        <div class='metadata inline'>
+          <ul class='list-inline'>
+            <li><i>ISBN:{{ book.isbn13 }}</i></li>
+            by
+            <li ng-repeat='author in book.authors' >
+              {{ author }}
+            </li>
+        </div>
+        <p>{{ book.description }}</p>
+      </div>
+    </div>
+  </li>
+</ul>
