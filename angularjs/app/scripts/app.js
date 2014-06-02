@@ -6,6 +6,7 @@ angular.module('bswebApp', [
   'ngSanitize',
   'ngRoute',
   'ui.bootstrap',
+  'ui.router',
 ])
   .config(function ($routeProvider) {
     $routeProvider
