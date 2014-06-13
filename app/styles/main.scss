@@ -1,0 +1,14 @@
+$icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
+// bower:scss
+@import "bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
+// endbower
+
+/* Space out content a bit */
+body {
+    padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+.main {
+	padding: 20px;
+}

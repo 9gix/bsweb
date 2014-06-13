@@ -1,15 +1,22 @@
 'use strict';
 
-angular.module('bswebApp', [
+/**
+ * @ngdoc overview
+ * @name bswebApp
+ * @description
+ * # bswebApp
+ *
+ * Main module of the application.
+ */
+angular
+  .module('bswebApp', [
+    'ngAnimate',
     'ngCookies',
-    'ngResource',
     'ngSanitize',
-    'ngRoute',
-    'ui.bootstrap',
+    'ngTouch',
     'ui.router',
   ])
-  .config(['$stateProvider', 'ACCESS_LEVELS', '$urlRouterProvider',
-          function ($stateProvider, ACCESS_LEVELS, $urlRouterProvider) {
+  .config(['$stateProvider', '$urlRouterProvider', 'accessLevel', function($stateProvider, $urlRouterProvider, accessLevel){
 
       $urlRouterProvider.when('', '/index.html');
       // Anonymous Routes
@@ -18,7 +25,7 @@ angular.module('bswebApp', [
           abstract: true,
           template: '<ui-view/>',
           data: {
-              access: ACCESS_LEVELS.anon,
+              access: accessLevel.anon,
           }
       })
       .state('anon.login', {
@@ -43,7 +50,7 @@ angular.module('bswebApp', [
           template: '<ui-view/>',
           url: '/manage',
           data: {
-              access: ACCESS_LEVELS.user,
+              access: accessLevel.user,
           }
       });
 
@@ -54,7 +61,7 @@ angular.module('bswebApp', [
           url: '/admin',
           template: '<ui-view/>',
           data: {
-              access: ACCESS_LEVELS.user,
+              access: accessLevel.user,
           }
       });
   }]);
