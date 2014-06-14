@@ -16,7 +16,8 @@ angular
     'ngTouch',
     'ui.router',
   ])
-  .config(['$stateProvider', '$urlRouterProvider', 'accessLevel', function($stateProvider, $urlRouterProvider, accessLevel){
+  .config(['$stateProvider', '$urlRouterProvider', 'accessLevel',
+          function($stateProvider, $urlRouterProvider, accessLevel){
 
       $urlRouterProvider.when('', '/index.html');
       // Anonymous Routes
@@ -66,4 +67,17 @@ angular
               access: accessLevel.user,
           }
       });
+  }])
+  .run(['$rootScope', '$location', 'User',
+       function($rootScope, $location, User){
+         $rootScope.$on('$routeChangeStart', function(event, next){
+           if (!User.isAuthorized(next.accessLevel)){
+            if (User.isLoggedIn()){
+              $location.path('/');
+            } else {
+              $location.path('/login');
+            }
+           }
+
+         });
   }]);
