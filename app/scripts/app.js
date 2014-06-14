@@ -25,12 +25,14 @@ angular
           abstract: true,
           template: '<ui-view/>',
           data: {
-              access: accessLevel.anon,
+            access: accessLevel.anon,
           }
-      })
-      .state('anon.login', {
-          template: ''
-      });
+        })
+        .state('anon.login', {
+          url: '/login',
+          templateUrl: 'login',
+          controller: 'LoginCtrl',
+        });
     $stateProvider
       .state('anon.404', {
         url: '/404/',
