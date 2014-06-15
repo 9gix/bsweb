@@ -17,21 +17,18 @@ angular
     'ui.router',
     'ui.bootstrap',
   ])
-  .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'accessLevel',
-          function($stateProvider, $urlRouterProvider, $locationProvider, accessLevel){
+  .config(['$stateProvider',
+          '$urlRouterProvider',
+          '$locationProvider',
+          'accessLevel',
+          function bswebAppConfig(
+            $stateProvider,
+            $urlRouterProvider,
+            $locationProvider,
+            accessLevel){
 
     $urlRouterProvider.otherwise('/index.html');
-    // Anonymous Routes
-    $stateProvider
-      .state('login', {
-        url: '/login',
-        onEnter: function($modal){
-          $modal.open({
-            templateUrl: 'views/login.html',
-            controller: 'LoginCtrl',
-          });
-        },
-      });
+
     $stateProvider
       .state('404', {
         url: '/404/',
@@ -68,11 +65,11 @@ angular
 
     // $locationProvider.html5Mode(true);
   }])
-  .run(['$rootScope', '$location', 'User',
-       function($rootScope, $location, User){
-         $rootScope.$on('$routeChangeStart', function(event, next){
-           if (!User.isAuthorized(next.accessLevel)){
-            if (User.isLoggedIn()){
+  .run(['$rootScope', '$location', 'Auth',
+       function bswebAppRun($rootScope, $location, Auth){
+         $rootScope.$on('$routeChangeStart', function routeChangeStartEvent(event, next){
+           if (!Auth.isAuthorized(next.accessLevel)){
+            if (Auth.isLoggedIn()){
               $location.path('/');
             } else {
               $location.path('/login');

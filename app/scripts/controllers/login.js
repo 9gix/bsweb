@@ -8,8 +8,11 @@
  * Controller of the bswebApp
  */
 angular.module('bswebApp')
-  .controller('LoginCtrl', ['$scope', 'User', function ($scope, User) {
-    $scope.login = function(){
-      User.setCurrentUser('user');
+  .controller('LoginCtrl', ['$scope', 'Auth', function LoginCtrl($scope, Auth) {
+    $scope.login = function login(){
+      Auth.login({
+        user: $scope.username,
+        password: $scope.password,
+      });
     };
   }]);
