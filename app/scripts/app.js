@@ -15,27 +15,25 @@ angular
     'ngSanitize',
     'ngTouch',
     'ui.router',
+    'ui.bootstrap',
   ])
   .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'accessLevel',
           function($stateProvider, $urlRouterProvider, $locationProvider, accessLevel){
 
-      $urlRouterProvider.when('', '/index.html');
-      // Anonymous Routes
-      $stateProvider
-        .state('anon', {
-          abstract: true,
-          template: '<ui-view/>',
-          data: {
-            access: accessLevel.anon,
-          }
-        })
-        .state('anon.login', {
-          url: '/login',
-          templateUrl: 'login',
-          controller: 'LoginCtrl',
-        });
+    $urlRouterProvider.otherwise('/index.html');
+    // Anonymous Routes
     $stateProvider
-      .state('anon.404', {
+      .state('login', {
+        url: '/login',
+        onEnter: function($modal){
+          $modal.open({
+            templateUrl: 'views/login.html',
+            controller: 'LoginCtrl',
+          });
+        },
+      });
+    $stateProvider
+      .state('404', {
         url: '/404/',
         templateUrl: '404',
       });
@@ -43,7 +41,7 @@ angular
     $stateProvider
       .state('home', {
           url: '/index.html',
-          template: 'hello',
+          templateUrl: 'views/main.html',
       });
 
     // User Routes
