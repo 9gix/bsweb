@@ -65,7 +65,8 @@ angular
               access: accessLevel.user,
           }
       });
-      $locationProvider.html5Mode(true);
+
+    // $locationProvider.html5Mode(true);
   }])
   .run(['$rootScope', '$location', 'User',
        function($rootScope, $location, User){
