@@ -16,6 +16,7 @@ angular
     'ngTouch',
     'ui.router',
     'ui.bootstrap',
+    'truncate',
   ])
   .config(['$stateProvider',
           '$urlRouterProvider',
@@ -37,8 +38,13 @@ angular
 
     $stateProvider
       .state('home', {
-          url: '/index.html',
-          templateUrl: 'views/main.html',
+        url: '/index.html',
+        templateUrl: 'views/main.html',
+      })
+      .state('search', {
+        url: '/search',
+        templateUrl: 'views/search.html',
+        controller: 'SearchCtrl',
       });
 
     // User Routes

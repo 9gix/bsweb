@@ -14,7 +14,8 @@
     "angular-ui-router": "~0.2.10",
     "restangular": "~1.4.0",
     "angular-ui-bootstrap": "~0.11.0",
-    "angular-bootstrap": "~0.11.0"
+    "angular-bootstrap": "~0.11.0",
+    "angular-truncate": "*"
   },
   "devDependencies": {
     "angular-mocks": "1.2.16",
