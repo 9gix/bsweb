@@ -53,7 +53,7 @@ angular
         templateUrl: 'views/book.list.html',
       })
       .state('search', {
-        url: '/search/',
+        url: '/search/?q',
         templateUrl: 'views/search.html',
         controller: 'SearchCtrl',
       });

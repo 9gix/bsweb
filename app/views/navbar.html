@@ -15,9 +15,9 @@
       <!-- Navbar Left side -->
       <form class='navbar-form navbar-left' role='search'>
         <div class="input-group">
-          <input type="text" name='q' class="form-control" placeholder="ISBN, Title, etc...">
+          <input type="text" name="q" ng-model="query" class="form-control" placeholder="ISBN, Title, etc...">
           <span class="input-group-btn">
-            <button type="submit" class="btn btn-default">Search</button>
+            <button type="submit" class="btn btn-default" ng-click='search()'>Search</button>
           </span>
         </div>
       </form>
