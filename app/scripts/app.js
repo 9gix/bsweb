@@ -40,9 +40,20 @@ angular
       .state('home', {
         url: '/index.html',
         templateUrl: 'views/main.html',
+      });
+    $stateProvider
+      .state('books', {
+        abstract: true,
+        url: '/books/',
+        template: '<ui-view />',
+      })
+      .state('books.list', {
+        url: '',
+        controller: 'BookCtrl',
+        templateUrl: 'views/book.list.html',
       })
       .state('search', {
-        url: '/search',
+        url: '/search/',
         templateUrl: 'views/search.html',
         controller: 'SearchCtrl',
       });
