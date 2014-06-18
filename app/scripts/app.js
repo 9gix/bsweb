@@ -44,13 +44,18 @@ angular
     $stateProvider
       .state('books', {
         abstract: true,
-        url: '/books/',
+        url: '/books',
         template: '<ui-view />',
       })
       .state('books.list', {
-        url: '',
+        url: '/',
         controller: 'BookCtrl',
         templateUrl: 'views/book.list.html',
+      })
+      .state('books.detail', {
+        url: '/:isbn',
+        controller: 'BookDetailCtrl',
+        templateUrl: 'views/book.detail.html',
       })
       .state('search', {
         url: '/search/?q',

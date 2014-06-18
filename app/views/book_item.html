@@ -16,5 +16,6 @@
             </li>
         </div>
         <p>{{ book.description | characters:255: false }}</p>
+        <a ui-sref='books.detail({ isbn: book.isbn13 })'>View Detail</a>
       </div>
     </div>
