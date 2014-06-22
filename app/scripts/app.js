@@ -20,11 +20,13 @@ angular
   ])
   .config(['$stateProvider',
           '$urlRouterProvider',
+          '$httpProvider',
           '$locationProvider',
           'accessLevel',
           function bswebAppConfig(
             $stateProvider,
             $urlRouterProvider,
+            $httpProvider,
             $locationProvider,
             accessLevel){
 
@@ -40,6 +42,13 @@ angular
       .state('home', {
         url: '/index.html',
         templateUrl: 'views/main.html',
+      });
+
+    $stateProvider
+      .state('login', {
+        url: '/login/',
+        controller: 'LoginCtrl',
+        templateUrl: 'views/login.html',
       });
     $stateProvider
       .state('books', {
@@ -86,9 +95,13 @@ angular
       });
 
     // $locationProvider.html5Mode(true);
+
+    $httpProvider.defaults.xsrfCookieName = 'csrftoken';
+    $httpProvider.defaults.xsrfHeaderName = 'x-csrftoken';
+    $httpProvider.defaults.allowCredentials = 'x-csrftoken';
   }])
-  .run(['$rootScope', '$location', 'Auth',
-       function bswebAppRun($rootScope, $location, Auth){
+  .run(['$rootScope', '$location', '$http', '$cookies', 'Auth', 'Settings',
+       function bswebAppRun($rootScope, $location, $http, $cookies,  Auth, Settings){
          $rootScope.$on('$routeChangeStart', function routeChangeStartEvent(event, next){
            if (!Auth.isAuthorized(next.accessLevel)){
             if (Auth.isLoggedIn()){

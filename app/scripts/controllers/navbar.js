@@ -23,7 +23,7 @@ angular.module('bswebApp')
       if (searchTimeout) {
         $timeout.cancel(searchTimeout);
       }
-      if ($scope.search_form.$dirty){
+      if ($scope.searchForm.$dirty){
         searchTimeout = $timeout($scope.search, 500);
       }
     });
@@ -32,7 +32,28 @@ angular.module('bswebApp')
       logo: '/logo.png',
       url: 'http://localhost:8080',
     };
+
     $scope.user = {
       isLogin: Auth.isLogin,
+    };
+
+    $scope.$watch(function(){return Auth.isLogin;}, function(isLogin){
+      $scope.user.isLogin = isLogin;
+    }, true);
+
+    $scope.login = function(){
+      Auth.login({username: $scope.username, password: $scope.password},
+        function(){
+          $scope.user.isLogin = true;
+        },
+        function(){
+          $scope.user.isLogin = false;
+        });
+    };
+
+    $scope.logout = function(){
+        Auth.logout(function(){
+          $scope.user.isLogin = false;
+        });
     };
   }]);

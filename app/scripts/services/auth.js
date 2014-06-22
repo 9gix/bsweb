@@ -8,61 +8,47 @@
  * Service in the bswebApp.
  */
 angular.module('bswebApp')
-  .service('Auth', ['$http', 'BSAPI', function Auth($http, BSAPI) {
+  .service('Auth', ['$http', 'Settings', function Auth($http, Settings) {
     var currentUser = null;
+    var userToken = localStorage.getItem('userToken');
+    var isLogin = userToken ? true : false;
+
+    var setTokenHeader = function(token){
+      if (!token){
+        delete $http.defaults.headers.common.Authorization;
+        return;
+      }
+      $http.defaults.headers.common.Authorization = 'Token ' +  token;
+
+    };
+
+    var setToken = function(token){
+      if (!token){
+        localStorage.removeItem('userToken');
+      } else {
+        localStorage.setItem('userToken', token);
+      }
+      setTokenHeader(token);
+    };
+
     return {
 
-      login: function(user, success, error){
-        // Popup an Authorization
-
-        var formatPopupOptions = function(options) {
-          var pairs = [];
-          angular.forEach(options, function(value, key) {
-            if (value || value === 0) {
-              value = value === true ? 'yes' : value;
-              pairs.push(key + '=' + value);
-            }
-          });
-          return pairs.join(',');
-        };
-
-        var objectToQueryString = function(obj) {
-              var str = [];
-              angular.forEach(obj, function(value, key) {
-                str.push(encodeURIComponent(key) + '=' + encodeURIComponent(value));
-              });
-              return str.join('&');
-            };
-
-        var getParams = function(){
-          return {
-            'response_type': 'token',
-            'client_id': BSAPI.clientId,
-            'redirect_uri': BSAPI.redirectUri,
-          };
-        };
-
-        var url = BSAPI.authorizationEndpoint + '?' + objectToQueryString(getParams());
-
-        var popup = window.open(
-          url, 'BSAPI Authorization',
-          formatPopupOptions({
-            width: 650,
-            height: 300,
-            resizable: true,
-            scrollbars: true,
-            status: true
-          }
-        ));
-      },
-
-      logout: function(success, error){
-        $http.post(BSAPI.url + '/logout').success(function(){
-          currentUser = null;
+      login: function(credential, success, error){
+        var req = $http.post(Settings.bsapi.tokenAuthEndpoint, credential);
+        req.success(function(result){
+          setToken(result.token);
+          isLogin = true;
           success();
         }).error(error);
       },
 
-      user: currentUser,
+      logout: function(success){
+        setToken(null);
+        isLogin = false;
+        success();
+      },
+
+      userToken: userToken,
+      isLogin: isLogin,
     };
   }]);
