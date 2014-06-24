@@ -1,4 +1,4 @@
-// Generated on 2014-06-13 using generator-angular 0.9.0-1
+// Generated on 2014-06-24 using generator-angular 0.9.1
 'use strict';
 
 // # Globbing
@@ -162,13 +162,16 @@ module.exports = function (grunt) {
 
     // Automatically inject Bower components into the app
     wiredep: {
+      options: {
+        cwd: '<%= yeoman.app %>'
+      },
       app: {
         src: ['<%= yeoman.app %>/index.html'],
-        ignorePath: new RegExp('^<%= yeoman.app %>/|../')
+        ignorePath:  /..\//
       },
       sass: {
-      src: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
-      ignorePath: /(\.\.\/){1,2}bower_components\//
+        src: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
+        ignorePath: /(\.\.\/){1,2}bower_components\//
       }
     },
 
