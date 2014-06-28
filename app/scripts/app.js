@@ -54,12 +54,19 @@ angular
       });
 
     $stateProvider
-      .state('login', {
+      .state('anon', {
+        abstract: true,
+        template: '<ui-view />',
+        data: {
+          accessLevel: access.anon,
+        },
+      })
+      .state('anon.login', {
         url: '/login/',
         controller: 'LoginCtrl',
         templateUrl: 'views/login.html',
       })
-      .state('register', {
+      .state('anon.register', {
         url: '/register/',
         controller: 'RegisterCtrl',
         templateUrl: 'views/register.html',

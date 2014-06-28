@@ -49,6 +49,7 @@ angular.module('bswebApp')
 
     return {
       isAuthorized: function(accessLevel){
+        // TODO: handle undefined user
         return accessLevel.bitMask & currentUser.role.bitMask;
       },
 
