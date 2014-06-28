@@ -89,12 +89,48 @@ angular
     // User Routes
     $stateProvider
       .state('user', {
-          abstract: true,
-          template: '<ui-view/>',
+          templateUrl: 'views/users/base.html',
           url: '/manage',
           data: {
               access: accessLevel.user,
-          }
+          },
+      })
+
+      .state('user.summary', {
+        url: '/summary',
+        templateUrl: 'views/users/summary.html',
+      })
+
+      .state('user.conversation', {
+        url: '/messages',
+        templateUrl: 'views/users/conversation.html',
+      })
+      .state('user.reputation', {
+        url: '/reputation',
+        templateUrl: 'views/users/reputation.html',
+      })
+      .state('user.profile', {
+        url: '/profile',
+        templateUrl: 'views/users/profile.html',
+      })
+      .state('user.settings', {
+        url: '/settings',
+        templateUrl: 'views/users/settings.html',
+      })
+
+      // User Book Routes
+      .state('user.book', {
+        controller: 'UserBookCtrl',
+        url: '/book',
+        templateUrl: 'views/users/book.html',
+      })
+      .state('user.book.mine', {
+        url: '/mine',
+        templateUrl: 'views/users/book.mine.html',
+      })
+      .state('user.book.theirs', {
+        url: '/borrowed',
+        templateUrl: 'views/users/book.theirs.html',
       });
 
     // Admin Routes
