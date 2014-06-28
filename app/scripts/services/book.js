@@ -8,6 +8,6 @@
  * Service in the bswebApp.
  */
 angular.module('bswebApp')
-  .service('Book', function Book() {
-    // AngularJS will instantiate a singleton by calling "new" on this function
+  .factory('Book', function Book(Restangular) {
+    return Restangular.service('books');
   });

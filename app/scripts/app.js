@@ -17,17 +17,20 @@ angular
     'ui.router',
     'ui.bootstrap',
     'truncate',
+    'restangular',
   ])
   .config(['$stateProvider',
           '$urlRouterProvider',
           '$httpProvider',
           '$locationProvider',
+          'RestangularProvider',
           'accessLevel',
           function bswebAppConfig(
             $stateProvider,
             $urlRouterProvider,
             $httpProvider,
             $locationProvider,
+            RestangularProvider,
             accessLevel){
 
     $urlRouterProvider.otherwise('/index.html');
@@ -99,6 +102,21 @@ angular
     $httpProvider.defaults.xsrfCookieName = 'csrftoken';
     $httpProvider.defaults.xsrfHeaderName = 'x-csrftoken';
     $httpProvider.defaults.allowCredentials = 'x-csrftoken';
+
+    RestangularProvider.addResponseInterceptor(
+      function(data, operation, what, url, response, deferred) {
+        var extractedData;
+        if (operation === "getList") {
+          extractedData = data.results;
+          extractedData.count = data.count;
+          extractedData.previous = data.previous;
+          extractedData.next = data.next;
+        } else {
+          extractedData = data;
+        }
+        return extractedData;
+    });
+    RestangularProvider.setBaseUrl('http://localhost:8000/');
   }])
   .run(['$rootScope', '$location', '$http', '$cookies', 'Auth', 'Settings',
        function bswebAppRun($rootScope, $location, $http, $cookies,  Auth, Settings){

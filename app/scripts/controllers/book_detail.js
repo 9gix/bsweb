@@ -8,10 +8,6 @@
  * Controller of the bswebApp
  */
 angular.module('bswebApp')
-  .controller('BookDetailCtrl', function ($scope, $stateParams, $http) {
-    var detailUrl = 'http://localhost:8000/books-profile/' + $stateParams.isbn + '/';
-    $http({method: 'GET', url: detailUrl}).
-      success(function(data){
-        $scope.book = data;
-      });
+  .controller('BookDetailCtrl', function ($scope, $stateParams, Book) {
+    $scope.book = Book.one($stateParams.isbn).get().$object;
   });
