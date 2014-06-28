@@ -48,10 +48,21 @@ angular
       });
 
     $stateProvider
+      .state('about', {
+        url: '/about/',
+        templateUrl: 'views/about.html',
+      });
+
+    $stateProvider
       .state('login', {
         url: '/login/',
         controller: 'LoginCtrl',
         templateUrl: 'views/login.html',
+      })
+      .state('register', {
+        url: '/register/',
+        controller: 'RegisterCtrl',
+        templateUrl: 'views/register.html',
       });
     $stateProvider
       .state('books', {
