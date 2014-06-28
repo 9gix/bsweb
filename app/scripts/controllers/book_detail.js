@@ -9,5 +9,5 @@
  */
 angular.module('bswebApp')
   .controller('BookDetailCtrl', function ($scope, $stateParams, Book) {
-    $scope.book = Book.one($stateParams.isbn).get().$object;
+    $scope.book = Book.get($stateParams.isbn);
   });

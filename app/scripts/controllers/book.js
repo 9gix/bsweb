@@ -9,5 +9,5 @@
  */
 angular.module('bswebApp')
   .controller('BookCtrl', function ($scope, Book) {
-    $scope.books = Book.getList().$object;
+    $scope.books = Book.all();
   });

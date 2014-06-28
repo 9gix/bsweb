@@ -9,11 +9,7 @@
  */
 angular.module('bswebApp')
   .controller('SearchCtrl',
-              ['$scope', '$http', '$location',
-                  function ($scope, $http, $location) {
-    var searchUrl = 'http://localhost:8000/search/?q=' + $location.search().q;
-    $http({method: 'GET', url: searchUrl}).
-      success(function(data){
-        $scope.books = data;
-      });
+              ['$scope', '$location', 'Book',
+                  function ($scope, $location, Book) {
+    $scope.books = Book.search($location.search().q);
   }]);
