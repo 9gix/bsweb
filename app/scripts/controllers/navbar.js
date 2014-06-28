@@ -33,27 +33,13 @@ angular.module('bswebApp')
       url: 'http://localhost:8080',
     };
 
-    $scope.user = {
-      isLogin: Auth.isLogin,
-    };
-
-    $scope.$watch(function(){return Auth.isLogin;}, function(isLogin){
-      $scope.user.isLogin = isLogin;
-    }, true);
+    $scope.auth = Auth;
 
     $scope.login = function(){
-      Auth.login({username: $scope.username, password: $scope.password},
-        function(){
-          $scope.user.isLogin = true;
-        },
-        function(){
-          $scope.user.isLogin = false;
-        });
+      Auth.login({username: $scope.username, password: $scope.password});
     };
 
     $scope.logout = function(){
-        Auth.logout(function(){
-          $scope.user.isLogin = false;
-        });
+        Auth.logout();
     };
   }]);

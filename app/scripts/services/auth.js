@@ -10,8 +10,6 @@
 angular.module('bswebApp')
   .service('Auth', ['$http', 'Settings', function Auth($http, Settings) {
     var currentUser = null;
-    var userToken = localStorage.getItem('userToken');
-    var isLogin = userToken ? true : false;
 
     var setTokenHeader = function(token){
       if (!token){
@@ -31,24 +29,25 @@ angular.module('bswebApp')
       setTokenHeader(token);
     };
 
+    var getUserToken = function(){
+      return localStorage.getItem('userToken');
+    };
+
     return {
 
-      login: function(credential, success, error){
+      login: function(credential){
         var req = $http.post(Settings.bsapi.tokenAuthEndpoint, credential);
         req.success(function(result){
           setToken(result.token);
-          isLogin = true;
-          success();
-        }).error(error);
+        });
       },
 
-      logout: function(success){
+      logout: function(){
         setToken(null);
-        isLogin = false;
-        success();
       },
 
-      userToken: userToken,
-      isLogin: isLogin,
+      isLogin: function(){
+        return getUserToken() ? true : false;
+      },
     };
   }]);

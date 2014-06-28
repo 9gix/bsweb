@@ -24,7 +24,7 @@
 
       <!-- Navbar Right side -->
       <!-- User Menu -->
-      <ul class='nav navbar-nav navbar-right' ng-show='user.isLogin'>
+      <ul class='nav navbar-nav navbar-right' ng-show='auth.isLogin()'>
         <li><a href='#'>Profile</a></li>
         <li><a href='#'>Credits</a></li>
         <li><a href='#'>Books</a></li>
@@ -35,7 +35,7 @@
 
       <!-- Login Form -->
         <form class='navbar-form navbar-right' name="loginForm" role="login"
-          ng-submit="login()" ng-hide="user.isLogin">
+          ng-submit="login()" ng-hide="auth.isLogin()">
           <div class="form-group">
             <input type="text" class="form-control" ng-model="username"
               name="username" placeholder="Username">
