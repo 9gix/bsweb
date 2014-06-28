@@ -24,14 +24,14 @@ angular
           '$httpProvider',
           '$locationProvider',
           'RestangularProvider',
-          'accessLevel',
           function bswebAppConfig(
             $stateProvider,
             $urlRouterProvider,
             $httpProvider,
             $locationProvider,
-            RestangularProvider,
-            accessLevel){
+            RestangularProvider){
+
+    var access = routingConfig.accessLevels;
 
     $urlRouterProvider.otherwise('/index.html');
 
@@ -89,10 +89,11 @@ angular
     // User Routes
     $stateProvider
       .state('user', {
+          abstract: true,
           templateUrl: 'views/users/base.html',
           url: '/manage',
           data: {
-              access: accessLevel.user,
+            accessLevel: access.user,
           },
       })
 
@@ -140,8 +141,8 @@ angular
           url: '/admin',
           template: '<ui-view/>',
           data: {
-              access: accessLevel.user,
-          }
+            accessLevel: access.admin,
+          },
       });
 
     // $locationProvider.html5Mode(true);
@@ -165,16 +166,14 @@ angular
     });
     RestangularProvider.setBaseUrl('http://localhost:8000/');
   }])
-  .run(['$rootScope', '$location', '$http', '$cookies', 'Auth', 'Settings',
-       function bswebAppRun($rootScope, $location, $http, $cookies,  Auth, Settings){
-         $rootScope.$on('$routeChangeStart', function routeChangeStartEvent(event, next){
-           if (!Auth.isAuthorized(next.accessLevel)){
-            if (Auth.isLoggedIn()){
-              $location.path('/');
-            } else {
-              $location.path('/login');
-            }
-           }
+  .run(['$rootScope', '$cookies', '$state', 'Auth', 'Settings',
+       function ($rootScope, $cookies, $state, Auth, Settings){
+         $rootScope.$on('$stateChangeStart', function (
+             event, toState, toParams, fromState, fromParams){
 
-         });
+         if (toState.data && !Auth.isAuthorized(toState.data.accessLevel)){
+           event.preventDefault();
+           $state.go('home');
+         }
+       });
   }]);
