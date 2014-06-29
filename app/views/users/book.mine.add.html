@@ -2,7 +2,60 @@
   <h2 class='modal-title'>Add Book</h2>
 </div>
 <div class='modal-body'>
-  <input name='isbn' placeholder='ISBN' ng-model='book.isbn13' />
+  <form class="form-inline" role="form">
+    <div class='input-group'>
+      <input name='query' placeholder='ISBN, Title, Author, Keyword, etc.'
+          ng-model='query' class='form-control'/>
+      <span class="input-group-btn">
+        <button type="submit"
+                class="btn btn-default"
+                ng-click="search()">Search</button>
+      </span>
+    </div>
+  </form>
+  <table class='table table-striped'>
+    <caption>Search Result</caption>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>ISBN</th>
+        <th>Title</th>
+        <th>Subtitle</th>
+        <th>Description</th>
+        <th>Author</th>
+        <th>Publisher</th>
+        <th>Date</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat='book in searchResult.books'>
+        <th>{{ $index + 1 }}</th>
+        <th>{{ book.isbn13 }}</th>
+        <th>{{ book.title }}</th>
+        <th>{{ book.subtitle }}</th>
+        <th>{{ book.description }}</th>
+        <th>{{ book.authors }}</th>
+        <th>{{ book.publisher }}</th>
+        <th>{{ book.date }}</th>
+        <th>
+          <div ng-switch='book.selected'>
+            <button class='btn btn-success' ng-switch-when='1'
+                    ng-click='book.selected = 0'>
+              <span class='glyphicon glyphicon-ok-circle'></span>
+            </button>
+            <button class='btn btn-primary' ng-switch-when='0'
+                    ng-click='book.selected = 1'>
+              <span class='glyphicon glyphicon-plus-sign'></span>
+            </button>
+            <button class='btn btn-default' ng-switch-when='-1' disabled >
+              <span class='glyphicon glyphicon-ban-circle'></span>
+            </button>
+          </button>
+        </th>
+      </tr>
+    </tbody>
+  </table>
 </div>
 <div class='modal-footer'>
   <button class='btn btn-primary' ng-click='add()'>Add</button>
