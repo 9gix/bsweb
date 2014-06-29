@@ -8,21 +8,27 @@
  * Service in the bswebApp.
  */
 angular.module('bswebApp')
-  .service('Auth', ['$http', 'Restangular', 'Settings', 'User',
-           function Auth($http, Restangular, Settings, User) {
+  .service('Auth',
+           function Auth($http, $sessionStorage,
+                         Restangular, Settings, User) {
 
     var accessLevel = routingConfig.accessLevel,
-        userRoles = routingConfig.userRoles,
-        currentUser = sessionStorage.getItem('user') ||
-                      { username: '', role: userRoles.public };
+        userRoles = routingConfig.userRoles;
+
+    $sessionStorage.$default({
+      user: { username: '', role: userRoles.public },
+      token: null,
+    });
+
+    var currentUser = $sessionStorage.user;
 
     var setUser = function(user){
-      sessionStorage.setItem('user', user);
+      $sessionStorage.user = user;
       currentUser = user;
     };
 
     var clearUser = function(){
-      sessionStorage.removeItem('user');
+      delete $sessionStorage.user;
       currentUser = { username: '', role: userRoles.public };
     };
 
@@ -36,20 +42,21 @@ angular.module('bswebApp')
 
     var setToken = function(token){
       if (!token){
-        localStorage.removeItem('userToken');
+        delete $sessionStorage.userToken;
       } else {
-        localStorage.setItem('userToken', token);
+        $sessionStorage.userToken = token;
       }
       setTokenHeader(token);
     };
 
     var getUserToken = function(){
-      return localStorage.getItem('userToken');
+      return $sessionStorage.userToken;
     };
+
+    setToken($sessionStorage.token);
 
     return {
       isAuthorized: function(accessLevel){
-        // TODO: handle undefined user
         return accessLevel.bitMask & currentUser.role.bitMask;
       },
 
@@ -76,4 +83,4 @@ angular.module('bswebApp')
         return getUserToken() ? true : false;
       },
     };
-  }]);
+  });

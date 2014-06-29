@@ -18,6 +18,7 @@ angular
     'ui.bootstrap',
     'truncate',
     'restangular',
+    'ngStorage',
   ])
   .config(['$stateProvider',
           '$urlRouterProvider',
@@ -157,6 +158,8 @@ angular
     $httpProvider.defaults.xsrfCookieName = 'csrftoken';
     $httpProvider.defaults.xsrfHeaderName = 'x-csrftoken';
     $httpProvider.defaults.allowCredentials = 'x-csrftoken';
+
+    RestangularProvider.setRequestSuffix('/');
 
     RestangularProvider.addResponseInterceptor(
       function(data, operation, what, url, response, deferred) {
