@@ -135,6 +135,7 @@ angular
       })
       .state('user.book.mine', {
         url: '/mine',
+        controller: 'MyBookCtrl',
         templateUrl: 'views/users/book.mine.html',
       })
       .state('user.book.theirs', {

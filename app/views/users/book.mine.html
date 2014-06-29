@@ -1,1 +1,37 @@
-My Book
+<h1>My Books List</h1>
+
+<button class='btn btn-default btn-primary'>
+  <span class='glyphicon glyphicon-plus'></span> Add Book
+</button>
+<table class='table table-hover'>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>ISBN</th>
+      <th>Title</th>
+      <th>Holder</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat='book in books'>
+      <td>{{ $index + 1 }}</td>
+      <td>{{ book.isbn13 }}</td>
+      <td>{{ book.title }}</td>
+      <td>{{ book.current_holder }}</td>
+      <td>
+        <div class='btn-group'>
+          <button class='btn btn-info' title='Show transaction history'>
+            <span class="glyphicon glyphicon-info-sign"></span>
+          </button>
+          <button class='btn btn-warning' title='Request my book back'>
+            <span class="glyphicon glyphicon-magnet"></span>
+          </button>
+          <button class='btn btn-danger' title='Remove from my book list'>
+            <span class="glyphicon glyphicon-trash"></span>
+          </button>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
