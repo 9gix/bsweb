@@ -177,8 +177,7 @@ angular
     });
     RestangularProvider.setBaseUrl('http://localhost:8000/');
   }])
-  .run(['$rootScope', '$cookies', '$state', 'Auth', 'Settings',
-       function ($rootScope, $cookies, $state, Auth, Settings){
+  .run(function ($rootScope, $cookies, $state, Auth, Settings){
          $rootScope.$on('$stateChangeStart', function (
              event, toState, toParams, fromState, fromParams){
 
@@ -187,4 +186,4 @@ angular
            $state.go('home');
          }
        });
-  }]);
+  });

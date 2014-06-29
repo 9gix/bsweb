@@ -11,8 +11,11 @@ angular.module('bswebApp')
   .factory('Book', function Book(Restangular) {
     var books = Restangular.service('books');
     return {
+      providerSearch: function(query){
+        return Restangular.all('search').customGETLIST('provider', {q: query});
+      },
       search: function(query){
-        return Restangular.all('search').getList({q: query}).$object;
+        return Restangular.all('search').getList({q: query});
       },
       all: function(){
         return books.getList().$object;

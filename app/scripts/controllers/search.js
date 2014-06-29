@@ -11,5 +11,5 @@ angular.module('bswebApp')
   .controller('SearchCtrl',
               ['$scope', '$location', 'Book',
                   function ($scope, $location, Book) {
-    $scope.books = Book.search($location.search().q);
+    $scope.books = Book.search($location.search().q).$object;
   }]);

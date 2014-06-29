@@ -8,20 +8,22 @@
  * Controller of the bswebApp
  */
 angular.module('bswebApp')
-  .controller('MyBookAddCtrl', function ($scope, $modalInstance) {
+  .controller('MyBookAddCtrl', function ($scope, $modalInstance, Book) {
+    $scope.providerForm = {
+      query: '',
+    };
 
-    $scope.books = {};
-    $scope.searchResult = {
-      books: [
-        {isbn13: '123', selected: 1},
-        {isbn13: '321', selected: 0},
-        {isbn13: '444', selected: -1},
-      ],
-
+    $scope.providerSearch = function(){
+      $scope.searchResult = {
+        books: Book.providerSearch($scope.providerForm.query).$object,
+      };
     };
 
     $scope.add = function(){
-      $modalInstance.close($scope.book);
+      var selectedBooks = $scope.searchResult.books.filter(function(book){
+        return book.isSelected;
+      });
+      $modalInstance.close(selectedBooks);
     };
 
     $scope.cancel = function(){

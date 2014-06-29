@@ -14,11 +14,13 @@ angular.module('bswebApp')
       $modal.open({
         templateUrl: 'views/users/book.mine.add.html',
         controller: 'MyBookAddCtrl',
+        size: 'lg',
       })
-      .result.then(function(book){
+      .result.then(function(books){
         // Update to Server that user added a new Book
-        console.log(book);
-        $scope.books.push(book);
+        for (var i = 0; i < books.length; i++){
+          $scope.books.push(books[i]);
+        }
       });
     };
 
