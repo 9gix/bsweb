@@ -12,11 +12,12 @@ angular.module('bswebApp')
     $scope.providerForm = {
       query: '',
     };
+    $scope.searchResult = {
+      books: [],
+    };
 
     $scope.providerSearch = function(){
-      $scope.searchResult = {
-        books: Book.providerSearch($scope.providerForm.query).$object,
-      };
+      $scope.searchResult.books = Book.providerSearch($scope.providerForm.query).$object;
     };
 
     $scope.add = function(){

@@ -14,8 +14,7 @@
       </span>
     </div>
   </form>
-  {{ selectedBooks }}
-  <table class='table table-striped'>
+  <table class='table table-striped' ng-show='searchResult.books.length'>
     <caption>Search Result</caption>
     <thead>
       <tr>
