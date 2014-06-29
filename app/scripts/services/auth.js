@@ -61,15 +61,17 @@ angular.module('bswebApp')
       },
 
       login: function(credential){
-        Restangular.oneUrl('token-auth', Settings.bsapi.tokenAuthEndpoint)
+        Restangular
+          .oneUrl('token-auth', Settings.bsapi.tokenAuthEndpoint)
           .post('', credential)
           .then(function(result){
             setToken(result.token);
-            setUser({username: credential.username, role: userRoles.user});
-
-            // TODO: investiage trailing slash issues
-            // return User.get(credential.username);
-
+            return User.get(credential.username);
+          })
+          .then(function(result){
+            var user = Restangular.copy(result);
+            user.role = userRoles.user;
+            setUser(user);
           });
         ;
       },

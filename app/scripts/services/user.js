@@ -13,7 +13,7 @@ angular.module('bswebApp')
 
     return {
       get: function(username){
-        return users.one(username).get().$object;
+        return users.one(username).get();
       },
     };
   });
