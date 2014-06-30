@@ -28,7 +28,6 @@ angular
             $locationProvider,
             RestangularProvider){
 
-    var access = routingConfig.accessLevels;
 
     // $locationProvider.html5Mode(true);
 

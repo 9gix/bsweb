@@ -1,4 +1,7 @@
 angular.module('bswebApp').config(function($stateProvider, $urlRouterProvider){
+
+    var access = routingConfig.accessLevels;
+
     $urlRouterProvider.otherwise('/index.html');
 
     $stateProvider
