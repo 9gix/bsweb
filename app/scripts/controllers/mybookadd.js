@@ -10,6 +10,8 @@
 angular.module('bswebApp')
   .controller('MyBookAddCtrl', function ($scope, MyBook, Book, myBooks) {
 
+    $scope.searchInProgress = false;
+
     $scope.$watch(
       function(){
         return myBooks;
@@ -29,7 +31,11 @@ angular.module('bswebApp')
     };
 
     $scope.providerSearch = function(){
-      $scope.searchResult.books = Book.providerSearch($scope.providerForm.query).$object;
+      $scope.searchInProgress = true;
+      Book.providerSearch($scope.providerForm.query).then(function(result){
+        $scope.searchResult.books = result;
+        $scope.searchInProgress = false;
+      });
     };
 
     $scope.add = function(book){

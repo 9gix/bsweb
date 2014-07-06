@@ -9,7 +9,8 @@
           ng-model='providerForm.query' class='form-control'/>
       <span class="input-group-btn">
         <button type="submit"
-                class="btn btn-default"
+                class="btn btn-primary"
+                ng-disabled='searchInProgress'
                 ng-click="providerSearch()">Search</button>
       </span>
     </div>
@@ -56,5 +57,5 @@
   </table>
 </div>
 <div class='modal-footer'>
-  <button class='btn btn-primary' ng-click='done()'>Close</button>
+  <button class='btn btn-warning' ng-click='done()'>Close</button>
 </div>
