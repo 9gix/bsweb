@@ -53,7 +53,7 @@ angular.module('bswebApp')
       return $sessionStorage.userToken;
     };
 
-    setToken($sessionStorage.token);
+    setToken(getUserToken());
 
     return {
       isAuthorized: function(accessLevel){
