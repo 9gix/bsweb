@@ -14,11 +14,11 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat='book in books'>
+    <tr ng-repeat='myBook in myBooks'>
       <td>{{ $index + 1 }}</td>
-      <td>{{ book.isbn13 }}</td>
-      <td>{{ book.title }}</td>
-      <td>{{ book.current_holder }}</td>
+      <td>{{ myBook.book.isbn }}</td>
+      <td>{{ myBook.book.title }}</td>
+      <td>{{ myBook.current_holder }}</td>
       <td>
         <div class='btn-group'>
           <button class='btn btn-info' title='Show transaction history'>

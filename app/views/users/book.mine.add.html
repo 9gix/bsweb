@@ -31,22 +31,22 @@
     <tbody>
       <tr ng-repeat='book in searchResult.books'>
         <th>{{ $index + 1 }}</th>
-        <th>{{ book.isbn13 }}</th>
+        <th>{{ book.isbn }}</th>
         <th>{{ book.title }} <small>{{ book.subtitle }}</small></th>
         <th>{{ book.description | characters:100: false }}</th>
         <th>{{ book.authors }}</th>
         <th>{{ book.publisher }}</th>
         <th>{{ book.date }}</th>
         <th>
-          <div ng-switch='book.isSelected'>
+          <div ng-switch='isOwned(book)'>
             <button class='btn btn-primary'
-                    ng-switch-default
-                    ng-click='book.isSelected = true'>
+                    ng-switch-when='false'
+                    ng-click='add(book)'>
               <span class='glyphicon glyphicon-plus-sign'></span>
             </button>
             <button class='btn btn-success'
                     ng-switch-when='true'
-                    ng-click='book.isSelected = false'>
+                    ng-click='add(book)'>
               <span class='glyphicon glyphicon-ok-circle'></span>
             </button>
           </button>
@@ -56,6 +56,5 @@
   </table>
 </div>
 <div class='modal-footer'>
-  <button class='btn btn-primary' ng-click='add()'>Add</button>
-  <button class='btn btn-warning' ng-click='cancel()'>Cancel</button>
+  <button class='btn btn-primary' ng-click='done()'>Close</button>
 </div>
