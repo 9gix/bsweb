@@ -12,6 +12,12 @@ angular.module('bswebApp')
 
     $scope.myBooks = MyBook.getList().$object;
 
+    $scope.remove = function(myBook){
+      MyBook.remove(myBook.id).then(function(id){
+        $scope.myBooks.splice($scope.myBooks.indexOf(myBook), 1);
+      });
+    };
+
     $scope.openAddBookModal = function(){
       $modal.open({
         templateUrl: 'views/users/book.mine.add.html',
