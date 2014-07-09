@@ -10,7 +10,7 @@
 angular.module('bswebApp')
   .constant('Settings', {
     bsapi: {
-      url: 'http://127.0.0.1:8000',
+      url: 'http://128.199.179.181/',
       get tokenAuthEndpoint () {
         return this.url + '/token-auth/';
       },
