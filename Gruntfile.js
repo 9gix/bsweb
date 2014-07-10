@@ -229,7 +229,18 @@ module.exports = function (grunt) {
               js: ['concat', 'uglifyjs'],
               css: ['cssmin']
             },
-            post: {}
+            post: {
+              js:[{
+                name: 'uglifyjs',
+                createConfig: function (context, block) {
+                  if (block.dest === 'scripts/vendor.js'){
+                    block.options = {
+                      mangle: false
+                    };
+                  }
+                }
+              }]
+            }
           }
         }
       }
@@ -269,6 +280,11 @@ module.exports = function (grunt) {
     // concat: {
     //   dist: {}
     // },
+    uglify: {
+      options: {
+        mangle: false
+      },
+    },
 
     imagemin: {
       dist: {
