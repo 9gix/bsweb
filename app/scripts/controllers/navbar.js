@@ -30,7 +30,6 @@ angular.module('bswebApp')
     $scope.site = {
       name: 'BookShare',
       logo: '/logo.png',
-      url: 'http://localhost:8080',
     };
 
     $scope.auth = Auth;

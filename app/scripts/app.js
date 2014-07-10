@@ -50,7 +50,7 @@ angular
         }
         return extractedData;
     });
-    RestangularProvider.setBaseUrl('http://localhost:8000/');
+    RestangularProvider.setBaseUrl('http://128.199.179.181/');
   }])
   .run(function ($rootScope, $cookies, $state, Auth, Settings){
          $rootScope.$on('$stateChangeStart', function (
