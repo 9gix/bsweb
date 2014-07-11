@@ -8,7 +8,7 @@
  * Controller of the bswebApp
  */
 angular.module('bswebApp')
-  .controller('MyBookAddCtrl', function ($scope, MyBook, Book, myBooks) {
+  .controller('MyBookAddCtrl', function ($scope, $q, MyBook, Book, myBooks) {
 
     $scope.searchInProgress = false;
 
@@ -23,7 +23,7 @@ angular.module('bswebApp')
       }
     );
 
-    $scope.providerForm = {
+    $scope.searchForm = {
       query: '',
     };
     $scope.searchResult = {
@@ -32,9 +32,18 @@ angular.module('bswebApp')
 
     $scope.providerSearch = function(){
       $scope.searchInProgress = true;
-      Book.providerSearch($scope.providerForm.query).then(function(result){
-        $scope.searchResult.books = result;
+      Book.search($scope.searchForm.query).then(function(books){
+        $scope.searchResult.books = books;
+        return Book.providerSearch($scope.searchForm.query);
+      }, function(error){
         $scope.searchInProgress = false;
+        $q.reject();
+      }).then(function(books){
+        $scope.searchResult.books = $scope.searchResult.books.concat(books);
+        $scope.searchInProgress = false;
+      }, function(error){
+        $scope.searchInProgress = false;
+        $q.reject();
       });
     };
 

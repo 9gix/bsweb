@@ -2,11 +2,11 @@
   <h2 class='modal-title'>Add Book</h2>
 </div>
 <div class='modal-body'>
-  <form name='providerSearchForm' class="form-inline" role="form"
+  <form name='bookSearchForm' class="form-inline" role="form"
         ng-submit='providerSearch()'>
     <div class='input-group'>
       <input name='query' placeholder='ISBN, Title, Author, Keyword, etc.'
-          ng-model='providerForm.query' class='form-control'/>
+          ng-model='searchForm.query' class='form-control'/>
       <span class="input-group-btn">
         <button type="submit"
                 class="btn btn-primary"
