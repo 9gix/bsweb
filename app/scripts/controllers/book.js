@@ -9,5 +9,8 @@
  */
 angular.module('bswebApp')
   .controller('BookCtrl', function ($scope, Book) {
+    $scope.page = {
+      title: 'Browse Books',
+    };
     $scope.books = Book.all();
   });

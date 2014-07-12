@@ -1,7 +1,8 @@
-<h1>Browse Books</h1>
+<h1>{{ page.title || "Book Lists" }}</h1>
 
 <ul>
   <li ng-repeat='book in books'>
     <bs-book-item book='book'></bs-book-item>
   </li>
 </ul>
+

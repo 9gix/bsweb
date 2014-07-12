@@ -59,7 +59,7 @@ angular.module('bswebApp').config(function($stateProvider, $urlRouterProvider){
       })
       .state('search', {
         url: '/search/?q',
-        templateUrl: 'views/search.html',
+        templateUrl: 'views/book.list.html',
         controller: 'SearchCtrl',
       });
 
