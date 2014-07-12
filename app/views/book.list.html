@@ -6,3 +6,7 @@
   </li>
 </ul>
 
+<pagination total-items='paginator.totalItems' ng-model='paginator.currentPage'
+            items-per-page='paginator.itemPerPage' max-size='paginator.maxSize'
+            ng-change='paginator.pageChanged()'>
+</pagination>
