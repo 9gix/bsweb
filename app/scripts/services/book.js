@@ -18,7 +18,7 @@ angular.module('bswebApp')
         return Restangular.all('search').getList({q: query});
       },
       all: function(){
-        return books.getList().$object;
+        return books;
       },
       get: function(isbn){
         return books.one(isbn).get().$object;

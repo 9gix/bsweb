@@ -3,7 +3,11 @@
     <div class="panel panel-default">
       <div class="panel-heading">Browse by Category</div>
       <div class="panel-body">
-        <a ui-sref='books.list'>Show All</a>
+        <ul>
+          <li ng-repeat='cat in categories'>
+            <a ui-sref='books.list({categories: cat.slug})'>{{ cat.name }}</a>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -11,7 +15,7 @@
     <div class="panel panel-default">
       <div class="panel-heading">Popular Book</div>
       <div class="panel-body">
-        Content
+        <a ui-sref='books.list'>Show All</a>
       </div>
     </div>
   </div>

@@ -8,9 +8,11 @@
  * Controller of the bswebApp
  */
 angular.module('bswebApp')
-  .controller('BookCtrl', function ($scope, Book) {
+  .controller('BookCtrl', function ($scope, $stateParams, Book) {
     $scope.page = {
-      title: 'Browse Books',
+      title: 'Browse Books Category',
     };
-    $scope.books = Book.all();
+    Book.all().getList({categories: $stateParams.categories}).then(function(result){
+      $scope.books = result;
+    });
   });

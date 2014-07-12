@@ -13,6 +13,7 @@ angular.module('bswebApp').config(function($stateProvider, $urlRouterProvider){
     $stateProvider
       .state('home', {
         url: '/index.html',
+        controller: 'HomeCtrl',
         templateUrl: 'views/main.html',
       });
 
@@ -48,7 +49,7 @@ angular.module('bswebApp').config(function($stateProvider, $urlRouterProvider){
         template: '<ui-view />',
       })
       .state('books.list', {
-        url: '/',
+        url: '/?categories',
         controller: 'BookCtrl',
         templateUrl: 'views/book.list.html',
       })
