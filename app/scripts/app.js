@@ -44,10 +44,12 @@ angular
         var extractedData;
         if (operation === "getList") {
           extractedData = data.results;
-          extractedData.page = response.config.params.page;
           extractedData.count = data.count;
           extractedData.previous = data.previous;
           extractedData.next = data.next;
+          if (response.config.params && response.config.params.page){
+            extractedData.page = response.config.params.page;
+          }
         } else {
           extractedData = data;
         }
