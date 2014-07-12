@@ -30,7 +30,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat='book in searchResult.books'>
+      <tr ng-repeat="book in searchResult.books | unique:'isbn'">
         <th>{{ $index + 1 }}</th>
         <th>{{ book.isbn }}</th>
         <th>{{ book.title }} <small>{{ book.subtitle }}</small></th>

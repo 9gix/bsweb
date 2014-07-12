@@ -15,6 +15,7 @@ angular
     'ngSanitize',
     'ngTouch',
     'ui.router',
+    'ui.utils',
     'ui.bootstrap',
     'truncate',
     'restangular',

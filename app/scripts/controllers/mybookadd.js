@@ -39,7 +39,7 @@ angular.module('bswebApp')
         $scope.searchInProgress = false;
         $q.reject();
       }).then(function(books){
-        $scope.searchResult.books = $scope.searchResult.books.concat(books);
+        $scope.searchResult.books = books.concat($scope.searchResult.books);
         $scope.searchInProgress = false;
       }, function(error){
         $scope.searchInProgress = false;
