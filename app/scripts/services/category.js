@@ -14,5 +14,8 @@ angular.module('bswebApp')
       all: function(){
         return categories.getList();
       },
+      withOwner: function(){
+        return categories.getList({with_owner: 'True'});
+      },
     };
   });

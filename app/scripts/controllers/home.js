@@ -9,7 +9,7 @@
  */
 angular.module('bswebApp')
   .controller('HomeCtrl', function ($scope, Category) {
-    Category.all().then(function(result){
+    Category.withOwner().then(function(result){
       $scope.categories = result;
     });
   });
