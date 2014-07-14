@@ -14,8 +14,14 @@ angular.module('bswebApp')
       providerSearch: function(query){
         return Restangular.all('search').customGETLIST('provider', {q: query});
       },
-      search: function(query){
-        return Restangular.all('search').getList({q: query});
+      search: function(query, page){
+        return Restangular.all('search').getList(
+          {
+            q: query,
+            page: page,
+            with_owner: 'True',
+          }
+        );
       },
       all: function(){
         return books;
