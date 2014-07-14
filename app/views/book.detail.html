@@ -24,7 +24,7 @@
         </header>
         <div class='panel-body'>
           <dl>
-            <dt>
+            <dt ng-show='book.authors'>
               Authors
             </dt>
             <dd>
@@ -34,13 +34,13 @@
                 </li>
               </ul>
             </dd>
-            <dt>
+            <dt ng-show='book.publisher'>
               Publisher
             </dt>
             <dd>
               {{ book.publisher }}
             </dd>
-            <dt>
+            <dt ng-show='book.published_on'>
               Published on
             </dt>
             <dd>
@@ -61,9 +61,9 @@
   </header>
   <div class='col-sm-6'>
     <ul>
-      <li ng-repeat='owner in book.owners'>
+      <li ng-repeat='userbook in usersBook'>
         <address>
-          {{ owner }}, is reachable at
+          {{ userbook.owner }}, is reachable at
           <a href='tel:12345678'>
             <span class='glyphicon glyphicon-phone'></span>
             12345678

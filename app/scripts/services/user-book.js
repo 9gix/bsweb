@@ -9,17 +9,17 @@
  */
 angular.module('bswebApp')
   .factory('UserBook', function (Restangular) {
-    var MyBook = Restangular.service('user-books');
+    var UserBook = Restangular.service('user-books');
 
     return {
       add: function (isbn) {
-        return MyBook.post(isbn);
+        return UserBook.post(isbn);
       },
       remove: function(userBookId){
-        return MyBook.one(userBookId).remove();
+        return UserBook.one(userBookId).remove();
       },
-      getList: function(){
-        return MyBook.getList();
+      getList: function(params){
+        return UserBook.getList(params);
       },
     };
   })
@@ -35,8 +35,8 @@ angular.module('bswebApp')
       remove: function(userBookId){
         return MyBook.one(userBookId).remove();
       },
-      getList: function(){
-        return MyBook.getList();
+      getList: function(params){
+        return MyBook.getList(params);
       },
     };
   });
