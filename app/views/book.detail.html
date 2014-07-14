@@ -1,62 +1,92 @@
-<section>
-  <header>
-    <h1>{{ book.title }}</h1>
+<section class='row'>
+  <header class='page-header'>
+    <h1>{{ book.title }} <small>{{ book.subtitle }}</small></h1>
   </header>
-  <p>{{ book.description }}</p>
-  <dl>
-    <dt>
-      Authors
-    </dt>
-    <dd>
-      <ul>
-        <li ng-repeat='author in book.authors'>
-          {{ author }}
-        </li>
-      </ul>
-    </dd>
-    <dt>
-      Publisher
-    </dt>
-    <dd>
-      {{ book.publisher }}
-    </dd>
-    <dt>
-      Published on
-    </dt>
-    <dd>
-      <time datetime='{{ book.published_on }}'>
-        {{ book.published_on | date:'MMM yyyy' }}
-      </time>
-    </dd>
-  </dl>
+  <div class='row'>
+    <div class='col-sm-9'>
+      <div class='media'>
+        <div class='pull-left'>
+          <a ui-sref='books.detail({ isbn: book.isbn })'>
+            <img data-src='holder.js/240x240' class='media-object img-thumbnail' holder-fix>
+          </a>
+        </div>
+        <div class='media-body'>
+          <p>{{ book.description }}</p>
+        </div>
+      </div>
+    </div>
+    <div class='col-sm-3'>
+      <aside class='panel panel-default'>
+        <header class='panel-heading'>
+          <h3 class='panel-title'>
+            Additional Information
+          </h3>
+        </header>
+        <div class='panel-body'>
+          <dl>
+            <dt>
+              Authors
+            </dt>
+            <dd>
+              <ul class='list-unstyled'>
+                <li ng-repeat='author in book.authors'>
+                  {{ author }}
+                </li>
+              </ul>
+            </dd>
+            <dt>
+              Publisher
+            </dt>
+            <dd>
+              {{ book.publisher }}
+            </dd>
+            <dt>
+              Published on
+            </dt>
+            <dd>
+              <time datetime='{{ book.published_on }}'>
+                {{ book.published_on | date:'MMM yyyy' }}
+              </time>
+            </dd>
+          </dl>
+        </div>
+      </aside>
+    </div>
+  </div>
 </section>
 
-<section>
-  <h2>Owners</h2>
-  <ul>
-    <li ng-repeat='owner in book.owners'>
-      <address>
-        {{ owner }}, is reachable at
-        <a href='tel:12345678'>
-          <span class='glyphicon glyphicon-phone'></span>
-          12345678
-        </a>
-        <a href='sms:12345678'>
-          <span class='glyphicon glyphicon-envelope'></span>
-          12345678
-        </a>
-        <br />
-        Collect your book at: <br />
-        123 Abc Street<br />
-        Happy Stare Coffee Stall<br />
-        Singapore, 87654321<br/>
-      </address>
-      <button class='btn btn-primary' title='Borrow the book'>
-        Request <span class='glyphicon glyphicon-envelope'></span>
-      </button>
-      <button class='btn btn-info'>
-        Calendar <span class='glyphicon glyphicon-calendar'></span>
-      </button>
-    </li>
-  </ul>
+<section class='row'>
+  <header class='page-header'>
+    <h2>Owners</h2>
+  </header>
+  <div class='col-sm-6'>
+    <ul>
+      <li ng-repeat='owner in book.owners'>
+        <address>
+          {{ owner }}, is reachable at
+          <a href='tel:12345678'>
+            <span class='glyphicon glyphicon-phone'></span>
+            12345678
+          </a>
+          <a href='sms:12345678'>
+            <span class='glyphicon glyphicon-envelope'></span>
+            12345678
+          </a>
+          <br />
+          collect your book at: <br />
+          123 abc street<br />
+          happy stare coffee stall<br />
+          singapore, 87654321<br/>
+        </address>
+        <button class='btn btn-primary' title='borrow the book'>
+          request <span class='glyphicon glyphicon-envelope'></span>
+        </button>
+        <button class='btn btn-info'>
+          calendar <span class='glyphicon glyphicon-calendar'></span>
+        </button>
+      </li>
+    </ul>
+  </div>
+  <div class='col-sm-6'>
+  </div>
 </section>

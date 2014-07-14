@@ -37,7 +37,7 @@
         <th>{{ book.description | characters:100: false }}</th>
         <th>{{ book.authors }}</th>
         <th>{{ book.publisher }}</th>
-        <th>{{ book.date }}</th>
+        <th><time>{{ book.published_on | date: 'yyyy' }}</time></th>
         <th>
           <div ng-switch='isOwned(book)'>
             <button class='btn btn-primary'
