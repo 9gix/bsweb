@@ -56,37 +56,40 @@
 </section>
 
 <section class='row'>
-  <header class='page-header'>
-    <h2>Owners</h2>
+  <header class=''>
+    <h2 class=''>Owners</h2>
   </header>
-  <div class='col-sm-6'>
-    <ul>
-      <li ng-repeat='userbook in usersBook'>
-        <address>
-          {{ userbook.owner }}, is reachable at
-          <a href='tel:12345678'>
-            <span class='glyphicon glyphicon-phone'></span>
-            12345678
-          </a>
-          <a href='sms:12345678'>
-            <span class='glyphicon glyphicon-envelope'></span>
-            12345678
-          </a>
-          <br />
-          collect your book at: <br />
-          123 abc street<br />
-          happy stare coffee stall<br />
-          singapore, 87654321<br/>
-        </address>
-        <button class='btn btn-primary' title='borrow the book'>
-          request <span class='glyphicon glyphicon-envelope'></span>
-        </button>
-        <button class='btn btn-info'>
-          calendar <span class='glyphicon glyphicon-calendar'></span>
-        </button>
-      </li>
-    </ul>
-  </div>
-  <div class='col-sm-6'>
-  </div>
+  <ul class='list-unstyled'>
+    <li ng-repeat='userbook in usersBook'>
+      <div class='col-sm-6'>
+        <div class='panel panel-default'>
+          <div class='panel-body'>
+          <address>
+            <strong>{{ userbook.owner }}</strong>
+            is reachable at
+            <a href='tel:12345678'>
+              <span class='glyphicon glyphicon-phone'></span>
+              12345678
+            </a>
+            <a href='sms:12345678'>
+              <span class='glyphicon glyphicon-envelope'></span>
+              12345678
+            </a>
+            <br />
+            collect your book at: <br />
+            123 abc street<br />
+            happy stare coffee stall<br />
+            singapore, 87654321<br/>
+          </address>
+          <button class='btn btn-primary' title='borrow the book'>
+            request <span class='glyphicon glyphicon-envelope'></span>
+          </button>
+          <button class='btn btn-info'>
+            calendar <span class='glyphicon glyphicon-calendar'></span>
+          </button>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
 </section>
