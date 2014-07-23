@@ -5,7 +5,9 @@
       <div class="panel-body">
         <ul class='list-unstyled'>
           <li ng-repeat='cat in categories'>
-            <a ui-sref='books.list({categories: cat.slug})'>{{ cat.name }}</a>
+            <a ui-sref='community.books.list({categories: cat.slug})'>
+              {{ cat.name }}
+            </a>
           </li>
         </ul>
       </div>
@@ -15,7 +17,7 @@
     <div class="panel panel-default">
       <div class="panel-heading">Popular Book</div>
       <div class="panel-body">
-        <a ui-sref='books.list'>Show All</a>
+        <a ui-sref='community.books.list'>Show All</a>
       </div>
     </div>
   </div>

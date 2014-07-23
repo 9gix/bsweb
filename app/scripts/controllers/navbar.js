@@ -8,11 +8,17 @@
  * Controller of the bswebApp
  */
 angular.module('bswebApp')
-  .controller('NavbarCtrl', [
-      '$scope', '$state', '$location', '$timeout', 'Auth',
-      function NavbarCtrl ($scope, $state,  $location, $timeout, Auth) {
+  .controller('NavbarCtrl',
+      function NavbarCtrl ($scope, $state, $stateParams, $location,
+                           $timeout, Auth, Community) {
 
     var searchTimeout;
+
+    $scope.community = Community.objects;
+    $scope.currentCommunity = Community.current;
+    Community.getAll().then(function(communities){
+      $scope.community.all= communities;
+    });
 
     $scope.search = function() {
       $state.go('search', {q: $scope.query});
@@ -41,4 +47,4 @@ angular.module('bswebApp')
     $scope.logout = function(){
         Auth.logout();
     };
-  }]);
+  });
