@@ -8,13 +8,27 @@
  * Factory in the bswebApp.
  */
 angular.module('bswebApp')
-  .factory('Membership', function (Community, Auth) {
+  .factory('Membership', function (Restangular, Community, Auth) {
     // TODO dynamically set membership id
     // membership id depends on the login user and the community id
-    var membershipId = 1;
+    var current = {
+      membership: null,
+    };
     return {
+      current: current,
+      objects: [],
       getId: function () {
-        return membershipId;
-      }
+        return current.membership.id;
+      },
+      findByCommunity: function(community){
+        return Restangular.all('membership').getList({
+          username: Auth.getUser().username
+        }).then(function(memberships){
+          current.membership = memberships.filter(function(membership){
+            return membership.user === Auth.getUser().id;
+          })[0];
+          return memberships;
+        });
+      },
     };
   });
