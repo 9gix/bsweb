@@ -18,7 +18,9 @@ angular.module('bswebApp')
       current: current,
       objects: [],
       getId: function () {
-        return current.membership.id;
+        if (current.membership){
+          return current.membership.id;
+        }
       },
       findByCommunity: function(community){
         return Restangular.all('membership').getList({
