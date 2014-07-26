@@ -10,28 +10,25 @@
         <span class='icon-bar'></span>
       </button>
     </div>
+
     <div collapse='navCollapsed' class='navbar-collapse' id='bs-navbar-collapse'>
 
-      <ul class='nav navbar-nav'>
-        <li>
-          <div class='btn-group navbar-btn' dropdown>
-            <button class='btn btn-default'
-              ui-sref='community.home({slug:currentCommunity.community.slug})'>
-              {{ currentCommunity.community.name }}
-            </button>
-            <button class='btn btn-default dropdown-toggle' >
-              <span class="caret"></span>
-            </button>
-            <ul class='dropdown-menu' role='menu'>
-              <li ng-repeat='community in community.all'>
-                <a ui-sref='community.home({slug:community.slug})'>
-                  {{ community.name }}
-                </a>
-              </li>
-            </ul>
-          </div>
-        </li>
-      </ul>
+      <div class='input-grp btn-group nav navbar-left navbar-btn' dropdown>
+        <button class='btn btn-default'
+          ui-sref='community.home({slug:currentCommunity.community.slug})'>
+          {{ currentCommunity.community.name }}
+        </button>
+        <button class='btn btn-default dropdown-toggle' >
+          <span class="caret"></span>
+        </button>
+        <ul class='dropdown-menu' role='menu'>
+          <li ng-repeat='community in community.all'>
+            <a ui-sref='community.home({slug:community.slug})'>
+              {{ community.name }}
+            </a>
+          </li>
+        </ul>
+      </div>
 
       <!-- Navbar Left side -->
       <form name='searchForm' class='navbar-form navbar-left' role='search'>
