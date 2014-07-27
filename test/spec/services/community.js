@@ -10,9 +10,4 @@ describe('Service: Community', function () {
   beforeEach(inject(function (_Community_) {
     Community = _Community_;
   }));
-
-  it('should do something', function () {
-    expect(!!Community).toBe(true);
-  });
-
 });

@@ -1,18 +1,13 @@
 'use strict';
 
-describe('Service: userBook', function () {
+describe('Service: UserBook', function () {
 
   // load the service's module
   beforeEach(module('bswebApp'));
 
   // instantiate service
-  var userBook;
-  beforeEach(inject(function (_userBook_) {
-    userBook = _userBook_;
+  var UserBook;
+  beforeEach(inject(function (_UserBook_) {
+    UserBook = _UserBook_;
   }));
-
-  it('should do something', function () {
-    expect(!!userBook).toBe(true);
-  });
-
 });
