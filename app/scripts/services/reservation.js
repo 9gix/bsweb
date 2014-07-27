@@ -20,5 +20,11 @@ angular.module('bswebApp')
       all: function(){
         return reservation.getList();
       },
+      approve: function(loanrequestId){
+        return reservation.one(loanrequestId).post('approve');
+      },
+      reject: function(loanrequestId){
+        return reservation.one(loanrequestId).post('reject');
+      },
     };
   });

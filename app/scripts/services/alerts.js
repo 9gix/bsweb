@@ -5,7 +5,11 @@
  * @name bswebApp.alert
  * @description
  * # alert
- * Value in the bswebApp.
+ * Usage:
+ * - alerts.push({type: 'success', msg: 'Voila'});
+ * - alerts.push({type: 'info', msg: 'allo'});
+ * - alerts.push({type: 'warning', msg: 'Ouch'});
+ * - alerts.push({type: 'danger', msg: 'Opps'});
  */
 angular.module('bswebApp')
   .value('alerts', []);
