@@ -1,7 +1,7 @@
 <div class='rows'>
   <section class='col-xs-8 panel panel-default'>
     <ol class='list-group'>
-      <li class='list-group-item' ng-repeat='i in [1,2,3,4]'>
+      <li class='list-group-item' ng-repeat='message in messages'>
         <div class='media'>
           <div class='pull-left'>
             <img data-src='holder.js/100x100' class='media-object img-thumbnail'
@@ -9,14 +9,14 @@
           </div>
           <div class='media-body'>
             <h3 class='media-heading'>
-              Sender Name
+              {{ message.sender }}
               <small>
-                28 July 2014, 11:07AM SGT
+                {{ message.created_at }}
               </small>
             </h3>
-            <p>This is the message crafted</p>
-            <p>Should allow multiline</p>
-            <p>Shouldn't allow html content </p>
+            <pre>
+            {{ message.content }}
+            </pre>
           </div>
         </div>
       </li>

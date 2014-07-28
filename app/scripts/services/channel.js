@@ -15,6 +15,9 @@ angular.module('bswebApp')
         return Channel.post({
           'loan_request': loanrequestId,
         });
-      }
+      },
+      messages: function(channelId){
+        return Channel.one(channelId).get();
+      },
     };
   });
