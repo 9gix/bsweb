@@ -43,7 +43,8 @@
       </td>
       <td>
         <div ng-hide='isMyBook()'>
-          <a ui-sref='community.user.channel({channelId: loanrequest.channel})' class='btn btn-primary'>
+          <a ui-sref='community.user.channel({channelId: loanrequest.channel})'
+             ng-disabled='!loanrequest.channel' class='btn btn-primary'>
             Message
           </a>
         </div>
