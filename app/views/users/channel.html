@@ -1,19 +1,44 @@
-<ol class='media-list'>
-  <li class='media' ng-repeat='i in [1,2,3,4]'>
-    <div class='pull-left'>
-      <img data-src='holder.js/100x100' class='media-object img-thumbnail'
-          holder-fix />
-    </div>
-    <div class='media-body'>
-      <h3 class='media-heading'>
-        Sender Name
-        <small>
-          28 July 2014, 11:07AM SGT
-        </small>
-      </h3>
-      <p>This is the message crafted</p>
-      <p>Should allow multiline</p>
-      <p>Shouldn't allow html content </p>
-    </div>
-  </li>
-</ol>
+<div class='rows'>
+  <section class='col-xs-8 panel panel-default'>
+    <ol class='list-group'>
+      <li class='list-group-item' ng-repeat='i in [1,2,3,4]'>
+        <div class='media'>
+          <div class='pull-left'>
+            <img data-src='holder.js/100x100' class='media-object img-thumbnail'
+                holder-fix />
+          </div>
+          <div class='media-body'>
+            <h3 class='media-heading'>
+              Sender Name
+              <small>
+                28 July 2014, 11:07AM SGT
+              </small>
+            </h3>
+            <p>This is the message crafted</p>
+            <p>Should allow multiline</p>
+            <p>Shouldn't allow html content </p>
+          </div>
+        </div>
+      </li>
+      <li class='list-group-item'>
+        <form role='form'>
+          <div class='form-group'>
+            <textarea class='form-control' rows='4'></textarea>
+          </div>
+          <button class='btn btn-primary'>Send</button>
+        </form>
+      </li>
+    </ol>
+  </section>
+  <aside class='col-xs-4'>
+    <form role='form'>
+      <div class='form-group'>
+        <label for='appointment'>Appointment Date</label>
+        <input type='date' class='form-control' id='appointment' />
+      </div>
+      <button type='submit' class='btn btn-default'>
+        Update
+      </button>
+    </form>
+  </aside>
+</div>
