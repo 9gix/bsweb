@@ -97,6 +97,13 @@ angular.module('bswebApp').config(function($stateProvider, $urlRouterProvider){
         controller: 'LoanRequestCtrl',
         templateUrl: 'views/users/loanrequest.html',
       })
+
+      .state('community.user.channel', {
+        url: '/channel/:channelId',
+        controller: 'ChannelCtrl',
+        templateUrl: 'views/users/channel.html',
+      })
+
       .state('community.user.reputation', {
         url: '/reputation',
         templateUrl: 'views/users/reputation.html',

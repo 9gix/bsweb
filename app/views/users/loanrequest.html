@@ -1,17 +1,38 @@
 <ul class='list-group'>
-  <li ng-repeat='loanrequest in loanrequests' class='list-group-item'>
+  <li ng-repeat='loanrequest in loanrequests' class='list-group-item'
+      ng-controller='LoanRequestItemCtrl'>
     <div class='row'>
       <div class='col-xs-10'>
         Membership ID: {{ loanrequest.borrower_membership }}
         Book ID: {{ loanrequest.owner_book }}
       </div>
       <div class='col-xs-2'>
-        <button class='btn btn-primary' ng-click='approve({{loanrequest.id}})'>
-          Approve
-        </button>
-        <button class='btn btn-danger' ng-click='reject({{loanrequest.id}})'>
-          Reject
-        </button>
+        <div ng-switch='loanrequest.status'>
+          <div ng-switch-when='pending'>
+            <button class='btn btn-success' ng-click='approve()'>
+              Approve
+            </button>
+            <button class='btn btn-danger' ng-click='reject()'>
+              Reject
+            </button>
+          </div>
+          <div ng-switch-when='approved'>
+            <a ui-sref='community.user.channel({channelId: loanrequest.channel})'
+               class='btn btn-primary'>
+              Arrange
+            </a>
+            <button class='btn btn-danger' ng-click='reject()'>
+              Reject
+            </button>
+          </div>
+          <div ng-switch-when='rejected'>
+            <a ui-sref='community.user.channel({channelId: loanrequest.channel})' class='btn btn-primary'>
+              Arrange
+            </a>
+            <button class='btn btn-danger' ng-click='reject()'>
+              Reject
+            </button>
+          </div>
       </div>
     </div>
   </li>
