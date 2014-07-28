@@ -16,7 +16,7 @@ angular.module('bswebApp')
           'loan_request': loanrequestId,
         });
       },
-      messages: function(channelId){
+      init: function(channelId){
         return Channel.one(channelId).get();
       },
       sendMessage: function(channelId, content){
@@ -24,6 +24,11 @@ angular.module('bswebApp')
           channel: channelId,
           content: content,
         });
+      },
+      updateAppointment: function(channelId, date){
+        var channel = Channel.one(channelId);
+        channel.appointment_at = date;
+        return channel.patch();
       },
     };
   });

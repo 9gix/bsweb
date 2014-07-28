@@ -9,16 +9,19 @@
  */
 angular.module('bswebApp')
   .controller('ChannelCtrl', function ($scope, $stateParams, $document, Channel, alerts) {
-    $scope.channelId = $stateParams.channelId;
-    Channel.messages($scope.channelId).then(function(result){
-      $scope.messages = result.message_set;
+    $scope.channel = {
+      id: $stateParams.channelId,
+    };
+    Channel.init($scope.channel.id).then(function(result){
+      $scope.channel.messages = result.message_set;
+      $scope.channel.appointment = new Date(result.appointment_at);
     });
 
     $scope.sendMessage = function(){
       Channel.sendMessage(
-        $scope.channelId, $scope.content
+        $scope.channel.id, $scope.channel.content
       ).then(function(result){
-        $scope.messages.push(result);
+        $scope.channel.messages.push(result);
         alerts.push({
           type: 'success',
           msg: 'Message Sent!!!',
@@ -27,4 +30,11 @@ angular.module('bswebApp')
         $document.scrollTop(0, 500);
       });
     };
+
+    $scope.updateAppointment = function(){
+      Channel.updateAppointment($scope.channel.id, $scope.channel.appointment).then(function(result){
+        alerts.push({type:'success', msg: 'Appointment Updated!'});
+      });
+    };
+
   });

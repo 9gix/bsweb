@@ -1,7 +1,7 @@
 <div class='rows'>
   <section class='col-xs-8 panel panel-default'>
     <ol class='list-group'>
-      <li class='list-group-item' ng-repeat='message in messages'>
+      <li class='list-group-item' ng-repeat='message in channel.messages'>
         <div class='media'>
           <div class='pull-left'>
             <img data-src='holder.js/100x100' class='media-object img-thumbnail'
@@ -23,7 +23,7 @@
       <li class='list-group-item'>
         <form role='form'>
           <div class='form-group'>
-            <textarea class='form-control' rows='4' ng-model='content'></textarea>
+            <textarea class='form-control' rows='4' ng-model='channel.content'></textarea>
           </div>
           <button class='btn btn-primary' ng-click='sendMessage()'>Send</button>
         </form>
@@ -34,9 +34,11 @@
     <form role='form'>
       <div class='form-group'>
         <label for='appointment'>Appointment Date</label>
-        <input type='date' class='form-control' id='appointment' />
+        <input type='datetime-local' class='form-control' id='appointment'
+               ng-model='channel.appointment' />
       </div>
-      <button type='submit' class='btn btn-default'>
+      <button type='submit' class='btn btn-default'
+              ng-click='updateAppointment()'>
         Update
       </button>
     </form>
