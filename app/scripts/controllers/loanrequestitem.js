@@ -18,8 +18,6 @@ angular.module('bswebApp')
         return Channel.create($scope.loanrequest.id);
       }, function(error){
         alerts.push({type: 'warning', msg: error.data.errors});
-      }).then(function(channel){
-        console.log(channel);
       });
     };
     $scope.reject = function(){
@@ -30,5 +28,9 @@ angular.module('bswebApp')
       }, function(error){
         alerts.push({type: 'warning', msg: error.data.errors});
       });
+    };
+
+    $scope.isMyBook = function(){
+      return true;
     };
   });

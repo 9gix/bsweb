@@ -7,32 +7,29 @@
         Book ID: {{ loanrequest.owner_book }}
       </div>
       <div class='col-xs-2'>
-        <div ng-switch='loanrequest.status'>
-          <div ng-switch-when='pending'>
+        <a ui-sref='community.user.channel({channelId: loanrequest.channel})' class='btn btn-primary'>
+          Message
+        </a>
+        <span ng-switch='loanrequest.status' ng-show='isMyBook()'>
+          <span ng-switch-when='pending'>
             <button class='btn btn-success' ng-click='approve()'>
               Approve
             </button>
             <button class='btn btn-danger' ng-click='reject()'>
               Reject
             </button>
-          </div>
-          <div ng-switch-when='approved'>
-            <a ui-sref='community.user.channel({channelId: loanrequest.channel})'
-               class='btn btn-primary'>
-              Arrange
-            </a>
+          </span>
+          <span ng-switch-when='approved'>
             <button class='btn btn-danger' ng-click='reject()'>
               Reject
             </button>
-          </div>
-          <div ng-switch-when='rejected'>
-            <a ui-sref='community.user.channel({channelId: loanrequest.channel})' class='btn btn-primary'>
-              Arrange
-            </a>
+          </span>
+          <span ng-switch-when='rejected'>
             <button class='btn btn-danger' ng-click='reject()'>
               Reject
             </button>
-          </div>
+          </span>
+        </span>
       </div>
     </div>
   </li>
