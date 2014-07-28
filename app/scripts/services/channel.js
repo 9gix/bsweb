@@ -19,5 +19,11 @@ angular.module('bswebApp')
       messages: function(channelId){
         return Channel.one(channelId).get();
       },
+      sendMessage: function(channelId, content){
+        return Restangular.service('messages').post({
+          channel: channelId,
+          content: content,
+        });
+      },
     };
   });

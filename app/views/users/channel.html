@@ -23,9 +23,9 @@
       <li class='list-group-item'>
         <form role='form'>
           <div class='form-group'>
-            <textarea class='form-control' rows='4'></textarea>
+            <textarea class='form-control' rows='4' ng-model='content'></textarea>
           </div>
-          <button class='btn btn-primary'>Send</button>
+          <button class='btn btn-primary' ng-click='sendMessage()'>Send</button>
         </form>
       </li>
     </ol>
