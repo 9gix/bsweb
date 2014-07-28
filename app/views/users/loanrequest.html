@@ -1,12 +1,47 @@
-<ul class='list-group'>
-  <li ng-repeat='loanrequest in loanrequests' class='list-group-item'
-      ng-controller='LoanRequestItemCtrl'>
-    <div class='row'>
-      <div class='col-xs-8'>
-        Membership ID: {{ loanrequest.borrower_membership }}
-        Book ID: {{ loanrequest.owner_book }}
-      </div>
-      <div class='col-xs-4'>
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th>Book Information</th>
+      <th>User Information</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat='loanrequest in loanrequests'
+        ng-controller='LoanRequestItemCtrl'>
+      <td>
+        <dl class='dl-horizontal'>
+          <dt>ISBN</dt>
+          <dd>{{ loanrequest.book_isbn }}</dd>
+          <dt>Title</dt>
+          <dd>{{ loanrequest.book_title }}</dd>
+        </dl>
+      </td>
+      <td>
+        <dl class='dl-horizontal'>
+          <div ng-show='isMyBook()'>
+            <dt>Borrower</dt>
+            <dd></dd>
+            <dt>Full name</dt>
+            <dd>{{ loanrequest.borrower_fullname }}
+            <dt>Username</dt>
+            <dd>{{ loanrequest.borrower_username }}
+            <dt>Reputation</dt>
+            <dd>100</dd>
+          </div>
+          <div ng-hide='isMyBook()'>
+            <dt>Owner</dt>
+            <dd></dd>
+            <dt>Full name</dt>
+            <dd>{{ loanrequest.owner_fullname }}
+            <dt>username</dt>
+            <dd>{{ loanrequest.owner_username }}
+            <dt>Reputation</dt>
+            <dd>100</dd>
+          </dd>
+        </dd>
+      </td>
+      <td>
         <div ng-hide='isMyBook()'>
           <a ui-sref='community.user.channel({channelId: loanrequest.channel})' class='btn btn-primary'>
             Message
@@ -37,7 +72,7 @@
             </span>
           </span>
         </div>
-      </div>
-    </div>
-  </li>
-</ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
