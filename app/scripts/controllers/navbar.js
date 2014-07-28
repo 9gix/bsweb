@@ -21,7 +21,7 @@ angular.module('bswebApp')
     });
 
     $scope.search = function() {
-      $state.go('search', {q: $scope.query});
+      $state.go('community.search', {q: $scope.query});
       $scope.$apply();
     };
 
