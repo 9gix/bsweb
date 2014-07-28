@@ -31,6 +31,6 @@ angular.module('bswebApp')
     };
 
     $scope.isMyBook = function(){
-      return true;
+      return $scope.loanrequest.is_my_book;
     };
   });
