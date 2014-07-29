@@ -12,6 +12,17 @@ angular.module('bswebApp')
     $scope.channel = {
       id: $stateParams.channelId,
     };
+
+    $scope.transaction = {
+      step: {
+        approval: false,
+        appointment: false,
+        handover: true,
+        status: false,
+        done: false,
+      },
+      isDone: false,
+    };
     Channel.init($scope.channel.id).then(function(result){
       $scope.channel.messages = result.message_set;
       $scope.channel.appointment = new Date(result.appointment_at);

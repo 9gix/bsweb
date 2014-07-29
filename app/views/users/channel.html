@@ -31,16 +31,55 @@
     </ol>
   </section>
   <aside class='col-xs-4'>
-    <form role='form'>
-      <div class='form-group'>
-        <label for='appointment'>Appointment Date</label>
-        <input type='datetime-local' class='form-control' id='appointment'
-               ng-model='channel.appointment' />
-      </div>
-      <button type='submit' class='btn btn-default'
-              ng-click='updateAppointment()'>
-        Update
-      </button>
-    </form>
+    <h4>Assistance Guide</h4>
+    <accordion close-others='true'>
+      <accordion-group is-open='transaction.step.approval'>
+        <accordion-heading>
+          Owner Approval
+          <span class="pull-right glyphicon glyphicon-ok-circle"></span>
+        </accordion-heading>
+        Please wait for the owner to approve this book request.
+      </accordion-group>
+      <accordion-group is-open='transaction.step.appointment'>
+        <accordion-heading>
+          Set Appointment
+          <span class="pull-right glyphicon glyphicon-ok-circle"></span>
+        </accordion-heading>
+        Please initiate a time and location arrangement for the borrower to collect the book
+        <form role='form'>
+          <div class='form-group'>
+            <label for='appointment'>Appointment Date</label>
+            <input type='datetime-local' class='form-control' id='appointment'
+                  ng-model='channel.appointment' />
+          </div>
+          <button type='submit' class='btn btn-default'
+                  ng-click='updateAppointment()'>
+            Update
+          </button>
+        </form>
+      </accordion-group>
+      <accordion-group is-open='transaction.step.handover'>
+        <accordion-heading>
+          Handover
+        </accordion-heading>
+
+        Please meet at the time and location that both of you agreed on.
+        Please be on time, and respect each others time.
+      </accordion-group>
+      <accordion-group is-open='transaction.step.status'>
+        <accordion-heading>
+          Status Update
+        </accordion-heading>
+        <button class='btn btn-primary'>I have deliver the book</button>
+      </accordion-group>
+      <accordion-group is-open='transaction.step.done'
+                       is-disabled='!transaction.isDone'>
+        <accordion-heading>
+          Done
+        </accordion-heading>
+        <p>Transaction completed. Thank you for your cooperation.</p>
+        <button class='btn btn-info'>Send Feedback</button>
+      </accordion-group>
+    </accordion>
   </aside>
 </div>
