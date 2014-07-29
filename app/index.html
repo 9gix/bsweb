@@ -22,8 +22,20 @@
     <!-- Top Navigation Bar -->
     <ng-include src="'views/navbar.html'"></ng-include>
 
-    <!-- Application Content -->
-    <main class="container" ui-view=""></main>
+
+    <!-- Main Container -->
+    <main class="container" >
+
+      <!-- Alerts -->
+      <div ng-controller='AlertCtrl'>
+        <alert ng-repeat="alert in alerts" type="{{alert.type}}"
+              close="closeAlert($index)" ng-cloak>{{alert.msg}}</alert>
+      </div>
+
+      <!-- Application Content -->
+      <div ui-view="">
+      </div>
+    </main>
 
     <!-- Footer -->
     <ng-include src="'views/footer.html'"></ng-include>
@@ -74,6 +86,7 @@
     <script src="bower_components/angular-ui-utils/ui-utils.js"></script>
     <script src="bower_components/angular-scroll/angular-scroll.min.js"></script>
     <script src="bower_components/holderjs/holder.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -101,7 +114,10 @@
         <script src="scripts/controllers/home.js"></script>
         <script src="scripts/services/category.js"></script>
         <script src="scripts/directives/holderfix.js"></script>
-        <script src="scripts/controllers/borrowdialogmodal.js"></script>
+        <script src="scripts/services/community.js"></script>
+        <script src="scripts/controllers/community.js"></script>
+        <script src="scripts/services/alerts.js"></script>
+        <script src="scripts/controllers/alert.js"></script>
         <!-- endbuild -->
 </body>
 </html>

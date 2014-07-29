@@ -2,7 +2,7 @@ angular.module('bswebApp').config(function($stateProvider, $urlRouterProvider){
 
     var access = routingConfig.accessLevels;
 
-    $urlRouterProvider.otherwise('/index.html');
+    $urlRouterProvider.otherwise('/world/index.html');
 
     $stateProvider
       .state('404', {
@@ -11,7 +11,19 @@ angular.module('bswebApp').config(function($stateProvider, $urlRouterProvider){
       });
 
     $stateProvider
-      .state('home', {
+    .state('community', {
+      abstract: true,
+      controller: 'CommunityCtrl',
+      url: '/:slug',
+      template: '<ui-view />',
+      resolve: {
+        slug: ['$stateParams', function($stateParams){
+          return $stateParams.slug;
+        }]
+      },
+    });
+    $stateProvider
+      .state('community.home', {
         url: '/index.html',
         controller: 'HomeCtrl',
         templateUrl: 'views/main.html',
@@ -43,22 +55,22 @@ angular.module('bswebApp').config(function($stateProvider, $urlRouterProvider){
       });
 
     $stateProvider
-      .state('books', {
+      .state('community.books', {
         abstract: true,
         url: '/books',
         template: '<ui-view />',
       })
-      .state('books.list', {
+      .state('community.books.list', {
         url: '/?categories',
         controller: 'BookCtrl',
         templateUrl: 'views/book.list.html',
       })
-      .state('books.detail', {
+      .state('community.books.detail', {
         url: '/:isbn',
         controller: 'BookDetailCtrl',
         templateUrl: 'views/book.detail.html',
       })
-      .state('search', {
+      .state('community.search', {
         url: '/search/?q',
         templateUrl: 'views/book.list.html',
         controller: 'SearchCtrl',
@@ -66,7 +78,7 @@ angular.module('bswebApp').config(function($stateProvider, $urlRouterProvider){
 
     // User Routes
     $stateProvider
-      .state('user', {
+      .state('community.user', {
           abstract: true,
           templateUrl: 'views/users/base.html',
           url: '/manage',
@@ -75,47 +87,47 @@ angular.module('bswebApp').config(function($stateProvider, $urlRouterProvider){
           },
       })
 
-      .state('user.summary', {
+      .state('community.user.summary', {
         url: '/summary',
         templateUrl: 'views/users/summary.html',
       })
 
-      .state('user.conversation', {
+      .state('community.user.conversation', {
         url: '/messages',
         templateUrl: 'views/users/conversation.html',
       })
-      .state('user.reputation', {
+      .state('community.user.reputation', {
         url: '/reputation',
         templateUrl: 'views/users/reputation.html',
       })
-      .state('user.profile', {
+      .state('community.user.profile', {
         url: '/profile',
         templateUrl: 'views/users/profile.html',
       })
-      .state('user.settings', {
+      .state('community.user.settings', {
         url: '/settings',
         templateUrl: 'views/users/settings.html',
       })
 
       // User Book Routes
-      .state('user.book', {
+      .state('community.user.book', {
         controller: 'UserBookCtrl',
         url: '/book',
         templateUrl: 'views/users/book.html',
       })
-      .state('user.book.mine', {
+      .state('community.user.book.mine', {
         url: '/mine',
         controller: 'MyBookCtrl',
         templateUrl: 'views/users/book.mine.html',
       })
-      .state('user.book.theirs', {
+      .state('community.user.book.theirs', {
         url: '/borrowed',
         templateUrl: 'views/users/book.theirs.html',
       });
 
     // Admin Routes
     $stateProvider
-      .state('admin', {
+      .state('community.admin', {
           abstract: true,
           url: '/admin',
           template: '<ui-view/>',
