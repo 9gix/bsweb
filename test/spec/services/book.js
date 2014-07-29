@@ -10,9 +10,4 @@ describe('Service: Book', function () {
   beforeEach(inject(function (_Book_) {
     Book = _Book_;
   }));
-
-  it('should do something', function () {
-    expect(!!Book).toBe(true);
-  });
-
 });

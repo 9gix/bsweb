@@ -1,0 +1,79 @@
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th>Book Information</th>
+      <th>User Information</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat='loanrequest in loanrequests'
+        ng-controller='LoanRequestItemCtrl'>
+      <td>
+        <dl class='dl-horizontal'>
+          <dt>ISBN</dt>
+          <dd>{{ loanrequest.book_isbn }}</dd>
+          <dt>Title</dt>
+          <dd>{{ loanrequest.book_title }}</dd>
+        </dl>
+      </td>
+      <td>
+        <dl class='dl-horizontal'>
+          <div ng-show='isMyBook()'>
+            <dt>Borrower</dt>
+            <dd></dd>
+            <dt>Full name</dt>
+            <dd>{{ loanrequest.borrower_fullname }}
+            <dt>Username</dt>
+            <dd>{{ loanrequest.borrower_username }}
+            <dt>Reputation</dt>
+            <dd>100</dd>
+          </div>
+          <div ng-hide='isMyBook()'>
+            <dt>Owner</dt>
+            <dd></dd>
+            <dt>Full name</dt>
+            <dd>{{ loanrequest.owner_fullname }}
+            <dt>username</dt>
+            <dd>{{ loanrequest.owner_username }}
+            <dt>Reputation</dt>
+            <dd>100</dd>
+          </dd>
+        </dd>
+      </td>
+      <td>
+        <div ng-hide='isMyBook()'>
+          <a ui-sref='community.user.channel({channelId: loanrequest.channel})'
+             ng-disabled='!loanrequest.channel' class='btn btn-primary'>
+            Message
+          </a>
+        </div>
+        <div ng-show='isMyBook()'>
+          <span ng-switch='loanrequest.status' ng-show='isMyBook()'>
+            <span ng-switch-when='pending'>
+              <button class='btn btn-success' ng-click='approve()'>
+                Approve
+              </button>
+              <button class='btn btn-danger' ng-click='reject()'>
+                Reject
+              </button>
+            </span>
+            <span ng-switch-when='approved'>
+              <a ui-sref='community.user.channel({channelId: loanrequest.channel})' class='btn btn-primary'>
+                Message
+              </a>
+              <button class='btn btn-danger' ng-click='reject()'>
+                Reject
+              </button>
+            </span>
+            <span ng-switch-when='rejected'>
+              <button class='btn btn-primary' ng-click='approve()'>
+                Approve
+              </button>
+            </span>
+          </span>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

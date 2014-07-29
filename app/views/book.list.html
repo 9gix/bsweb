@@ -17,7 +17,34 @@
       </header>
       <ul class='list-group'>
         <li ng-repeat='book in books' class='list-group-item'>
-          <bs-book-item book='book'></bs-book-item>
+          <div class='media'>
+            <div class='pull-left'>
+              <a ui-sref='community.books.detail({ isbn: book.isbn })'>
+                <img data-src='holder.js/140x140' class='media-object img-thumbnail' holder-fix>
+              </a>
+            </div>
+            <div class='media-body'>
+              <h3 class='media-heading'>
+                <a ui-sref='community.books.detail({ isbn: book.isbn })'>
+                  {{ book.title }}
+                </a>
+              </h2>
+              <h4>
+                <a ui-sref='community.books.detail({ isbn: book.isbn })'>
+                {{ book.subtitle }}
+                </a>
+              </h3>
+              <div class='metadata inline'>
+                <ul class='list-inline'>
+                  <li><i>ISBN:{{ book.isbn }}</i></li>
+                  by
+                  <li ng-repeat='author in book.authors' >
+                    {{ author }}
+                  </li>
+              </div>
+              <p>{{ book.description | characters:255: false }}</p>
+            </div>
+          </div>
         </li>
       </ul>
       <footer class='panel-footer'>

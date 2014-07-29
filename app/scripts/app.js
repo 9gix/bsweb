@@ -55,16 +55,15 @@ angular
         }
         return extractedData;
     });
-    RestangularProvider.setBaseUrl('http://128.199.179.181/');
-    //RestangularProvider.setBaseUrl('http://localhost:8000/');
   }])
-  .run(function ($rootScope, $cookies, $state, Auth, Settings){
-         $rootScope.$on('$stateChangeStart', function (
-             event, toState, toParams, fromState, fromParams){
+  .run(function ($rootScope, $cookies, $state, Restangular, Auth, Settings){
+    Restangular.setBaseUrl(Settings.bsapi.url);
+    $rootScope.$on('$stateChangeStart', function (
+        event, toState, toParams, fromState, fromParams){
 
-         if (toState.data && !Auth.isAuthorized(toState.data.accessLevel)){
-           event.preventDefault();
-           $state.go('home');
-         }
-       });
+    if (toState.data && !Auth.isAuthorized(toState.data.accessLevel)){
+      event.preventDefault();
+      $state.go('home');
+    }
+  });
   });

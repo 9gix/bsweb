@@ -5,18 +5,14 @@ describe('Controller: MybookaddCtrl', function () {
   // load the controller's module
   beforeEach(module('bswebApp'));
 
-  var MybookaddCtrl,
+  var MyBookAddCtrl,
     scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    MybookaddCtrl = $controller('MybookaddCtrl', {
+    MyBookAddCtrl = $controller('MyBookAddCtrl', {
       $scope: scope
     });
   }));
-
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
-  });
 });

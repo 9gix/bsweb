@@ -9,7 +9,9 @@
  */
 angular.module('bswebApp')
   .factory('Community', function ($q, Restangular) {
-    var current = {};
+    var current = {
+      community: null,
+    };
     return {
       current: current,
       objects: [],

@@ -11,11 +11,7 @@ describe('Service: Auth', function () {
     Auth = _Auth_;
   }));
 
-  it('should do something', function () {
-    expect(!!Auth).toBe(true);
-  });
-
-  it('should be able to login user', function () {});
+  it('should be able to login user');
   it('should be able to logout user', function () {});
   it('should be able to register user', function () {});
   it('should be able to get current user', function () {});

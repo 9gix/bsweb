@@ -1,18 +1,18 @@
 'use strict';
 
-describe('Service: api', function () {
+describe('Service: Channel', function () {
 
   // load the service's module
   beforeEach(module('bswebApp'));
 
   // instantiate service
-  var api;
-  beforeEach(inject(function (_api_) {
-    api = _api_;
+  var Channel;
+  beforeEach(inject(function (_Channel_) {
+    Channel = _Channel_;
   }));
 
   it('should do something', function () {
-    expect(!!api).toBe(true);
+    expect(!!Channel).toBe(true);
   });
 
 });

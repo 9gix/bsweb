@@ -92,10 +92,18 @@ angular.module('bswebApp').config(function($stateProvider, $urlRouterProvider){
         templateUrl: 'views/users/summary.html',
       })
 
-      .state('community.user.conversation', {
-        url: '/messages',
-        templateUrl: 'views/users/conversation.html',
+      .state('community.user.loanrequest', {
+        url: '/loan-request',
+        controller: 'LoanRequestCtrl',
+        templateUrl: 'views/users/loanrequest.html',
       })
+
+      .state('community.user.channel', {
+        url: '/channel/:channelId',
+        controller: 'ChannelCtrl',
+        templateUrl: 'views/users/channel.html',
+      })
+
       .state('community.user.reputation', {
         url: '/reputation',
         templateUrl: 'views/users/reputation.html',

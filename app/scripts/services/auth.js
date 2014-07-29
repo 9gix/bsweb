@@ -27,6 +27,10 @@ angular.module('bswebApp')
       currentUser = user;
     };
 
+    var getUser = function(){
+      return currentUser;
+    };
+
     var clearUser = function(){
       delete $sessionStorage.user;
       currentUser = { username: '', role: userRoles.public };
@@ -59,6 +63,8 @@ angular.module('bswebApp')
       isAuthorized: function(accessLevel){
         return accessLevel.bitMask & currentUser.role.bitMask;
       },
+
+      getUser: getUser,
 
       login: function(credential){
         Restangular
