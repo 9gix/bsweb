@@ -23,14 +23,17 @@ angular.module('bswebApp')
         }
       },
       findByCommunity: function(community){
-        return Restangular.all('membership').getList({
-          username: Auth.getUser().username
-        }).then(function(memberships){
-          current.membership = memberships.filter(function(membership){
-            return membership.user === Auth.getUser().id;
-          })[0];
-          return memberships;
-        });
+        if (Auth.isLogin()){
+          return Restangular.all('membership').getList({
+            username: Auth.getUser().username
+          }).then(function(memberships){
+            current.membership = memberships.filter(function(membership){
+              return membership.user === Auth.getUser().id;
+            })[0];
+            return memberships;
+          });
+        } else {
+        }
       },
     };
   });
