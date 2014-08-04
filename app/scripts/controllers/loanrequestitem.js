@@ -8,16 +8,22 @@
  * Controller of the bswebApp
  */
 angular.module('bswebApp')
-  .controller('LoanRequestItemCtrl', function ($scope, Reservation, Channel, alerts) {
+  .controller('LoanRequestItemCtrl', function ($scope, $q, Reservation, Channel, alerts) {
 
     $scope.approve = function(){
       // TODO redirect user to the channel
-      Reservation.approve($scope.loanrequest.id).then(function(result){
-        alerts.push({type: 'success', msg: result.status_display});
-        $scope.loanrequest.status = result.status;
-        return Channel.create($scope.loanrequest.id);
+      Reservation.approve($scope.loanrequest.id).then(function(loanrequest){
+        alerts.push({type: 'success', msg: loanrequest.status_display});
+        $scope.loanrequest.status = loanrequest.status;
+        if (!$scope.loanrequest.channel){
+          return Channel.create($scope.loanrequest.id);
+        } else {
+          return $q.reject('channel already created');
+        }
       }, function(error){
         alerts.push({type: 'warning', msg: error.data.errors});
+      }).then(function(channel){
+        $scope.loanrequest.channel = channel.id;
       });
     };
     $scope.reject = function(){
