@@ -76,8 +76,12 @@ angular.module('bswebApp').config(function($stateProvider, $urlRouterProvider){
         url: '/search/?q',
         templateUrl: 'views/book.list.html',
         controller: 'SearchCtrl',
+      })
+      .state('community.filter', {
+        templateUrl: 'views/book.list.html',
+        controller: 'FilterCtrl',
       });
-
+      
     // User Routes
     $stateProvider
       .state('community.user', {

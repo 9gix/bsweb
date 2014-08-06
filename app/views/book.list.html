@@ -15,7 +15,7 @@
             </button>
             <ul class='dropdown-menu' role='menu'>
               <li ng-repeat='cat in categories'>
-                <a ui-sref='community.books.list({categories:categories.slug})'>
+                <a ui-sref='community.filter({categories:categories.slug})'>
                   {{ cat.name }}
                 </a>
               </li>
