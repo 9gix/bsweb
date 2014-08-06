@@ -14,6 +14,9 @@ angular.module('bswebApp')
     $scope.page = {
       title: 'Search Result',
     };
+    
+
+    
     $scope.paginator = {
       totalItems: 0,
       currentPage: 1,

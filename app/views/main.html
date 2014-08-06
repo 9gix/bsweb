@@ -12,29 +12,7 @@
         </ul>
       </div>
     </div>
-
-    <div class="panel panel-default">
-        <div class="panel-heading">Browse by Author</div>
-          <div class="panel-body">
-            <ul class='list-unstyled'>
-              <li ng-repeat='cat in categories'>
-                <a ui-sref='books.list({categories: cat.slug})'>{{ cat.name }}</a>
-              </li>
-            </ul>
-          </div>
-    </div>
-
-    <div class="panel panel-default">
-        <div class="panel-heading">Browse by Publisher</div>
-        <div class="panel-body">
-            <ul class='list-unstyled'>
-              <li ng-repeat='cat in categories'>
-                <a ui-sref='books.list({categories: cat.slug})'>{{ cat.name }}</a>
-              </li>
-            </ul>
-        </div>
-    </div>
-  </div>    
+  </div>
 
   <div class='col-xs-12 col-sm-4'>
     <div class="panel panel-default">

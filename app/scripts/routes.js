@@ -28,12 +28,14 @@ angular.module('bswebApp').config(function($stateProvider, $urlRouterProvider){
         controller: 'HomeCtrl',
         templateUrl: 'views/main.html',
       });
-
+ 
+      
     $stateProvider
       .state('about', {
         url: '/about/',
         templateUrl: 'views/about.html',
       });
+
 
     $stateProvider
       .state('anon', {

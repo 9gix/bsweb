@@ -8,10 +8,14 @@
  * Controller of the bswebApp
  */
 angular.module('bswebApp')
-  .controller('BookCtrl', function ($scope, $document, $stateParams, Book) {
+  .controller('BookCtrl', function ($scope, $document, $stateParams, Book, Category) {
     $scope.page = {
       title: 'Browse Books Category',
     };
+
+    Category.withOwner().then(function(result){
+      $scope.categories = result;
+    });
 
     $scope.paginator = {
       totalItems: 0,
