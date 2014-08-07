@@ -28,12 +28,13 @@ angular.module('bswebApp')
         Book.search(
           $location.search().q,
           $scope.paginator.currentPage
-        ).then (function(result){
+        ).then(function(result){
           result.all().getList({
-          categories: $stateParams.categories,
-          page: $scope.paginator.currentPage,
-          with_owner: 'True',
-        })}).then(function(result){
+            categories: $stateParams.categories,
+            page: $scope.paginator.currentPage,
+            with_owner: 'True',
+          })
+        }).then(function(result){
           $scope.paginator.totalItems = result.count;
           $scope.paginator.currentPage = result.page;
           $scope.books = result;

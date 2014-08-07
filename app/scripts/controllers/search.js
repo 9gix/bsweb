@@ -9,8 +9,8 @@
  */
 angular.module('bswebApp')
   .controller('SearchCtrl',
-              ['$scope', '$location', '$document', 'Book', 'Category',
-                  function ($scope, $location, $document, Book, Category) {
+              ['$scope', '$location', '$stateParams', '$document', 'Book', 'Category',
+                  function ($scope, $location, $stateParams, $document, Book, Category) {
     $scope.page = {
       title: 'Search Result',
     };
@@ -27,6 +27,7 @@ angular.module('bswebApp')
       pageChanged: function(){
         Book.search(
           $location.search().q,
+          $stateParams.categories,
           $scope.paginator.currentPage
         ).then(function(result){
           $scope.paginator.totalItems = result.count;
