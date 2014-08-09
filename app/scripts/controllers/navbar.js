@@ -34,7 +34,7 @@ angular.module('bswebApp')
       }
     });
     $scope.site = {
-      name: 'BookShare',
+      name: 'BookCycle',
       logo: '/logo.png',
     };
 
