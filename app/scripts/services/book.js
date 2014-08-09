@@ -14,15 +14,17 @@ angular.module('bswebApp')
       providerSearch: function(query){
         return Restangular.all('search').customGETLIST('provider', {q: query});
       },
-      search: function(query, page){
+      search: function(query, catFilter, page){
         return Restangular.all('search').getList(
           {
             q: query,
+            categories: catFilter,
             page: page,
             with_owner: 'True',
           }
         );
       },
+      
       all: function(){
         return books;
       },

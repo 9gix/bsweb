@@ -8,7 +8,9 @@
  * Controller of the bswebApp
  */
 angular.module('bswebApp')
-  .controller('BookCtrl', function ($scope, $document, $stateParams, Book) {
+  .controller('BookCtrl', function ($scope, $document, $stateParams,
+                                    Book, Category) {
+
     $scope.page = {
       title: 'Browse Books Category',
     };
@@ -26,7 +28,7 @@ angular.module('bswebApp')
         }).then(function(result){
           $scope.paginator.totalItems = result.count;
           $scope.paginator.currentPage = result.page;
-          $scope.books = result;
+          $scope.data.books = result;
         }).then(function(){
           $document.scrollTop(0, 300);
         });
