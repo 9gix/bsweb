@@ -29,11 +29,13 @@ angular.module('bswebApp').config(function($stateProvider, $urlRouterProvider){
         templateUrl: 'views/main.html',
       });
 
+
     $stateProvider
       .state('about', {
         url: '/about/',
         templateUrl: 'views/about.html',
       });
+
 
     $stateProvider
       .state('anon', {
@@ -61,21 +63,41 @@ angular.module('bswebApp').config(function($stateProvider, $urlRouterProvider){
         template: '<ui-view />',
       })
       .state('community.books.list', {
-        url: '/?categories',
-        controller: 'BookCtrl',
+        abstract: true,
+        controller: 'BookListCtrl',
         templateUrl: 'views/book.list.html',
+      })
+      .state('community.books.list.browse', {
+        url: '/?categories',
+        views: {
+          'filters': {
+            controller: 'BookFilterCtrl',
+            templateUrl: 'views/book.list.filter.html',
+          },
+          'booklist': {
+            controller: 'BookBrowseCtrl',
+            templateUrl: 'views/book.list.content.html',
+          },
+        },
+      })
+      .state('community.books.list.search', {
+        url: '/search/?q&categories',
+        views: {
+          'filters': {
+            controller: 'BookFilterCtrl',
+            templateUrl: 'views/book.list.filter.html',
+          },
+          'booklist': {
+            controller: 'SearchCtrl',
+            templateUrl: 'views/book.list.content.html',
+          },
+        },
       })
       .state('community.books.detail', {
         url: '/:isbn',
         controller: 'BookDetailCtrl',
         templateUrl: 'views/book.detail.html',
-      })
-      .state('community.search', {
-        url: '/search/?q',
-        templateUrl: 'views/book.list.html',
-        controller: 'SearchCtrl',
       });
-
     // User Routes
     $stateProvider
       .state('community.user', {

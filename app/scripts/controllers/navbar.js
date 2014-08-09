@@ -21,8 +21,7 @@ angular.module('bswebApp')
     });
 
     $scope.search = function() {
-      $state.go('community.search', {q: $scope.query});
-      $scope.$apply();
+      $state.go('community.books.list.search', {q: $scope.query});
     };
 
     $scope.$watch('query', function(){

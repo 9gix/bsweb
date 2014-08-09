@@ -2,19 +2,23 @@
 
 /**
  * @ngdoc function
- * @name bswebApp.controller:SearchCtrl
+ * @name bswebApp.controller:FilterCtrl
  * @description
- * # SearchCtrl
+ * # FilterCtrl
  * Controller of the bswebApp
  */
 angular.module('bswebApp')
-  .controller('SearchCtrl',
-              function ($scope, $location, $stateParams, $document,
-                        Book, Category) {
+  .controller('FilterCtrl',
+              ['$scope', '$location', '$document', 'Book',
+                  function ($scope, $location, $document, $stateParams, Book, Category) {
     $scope.page = {
       title: 'Search Result',
     };
-
+ 
+    Category.withOwner().then(function(result){
+      $scope.categories = result;
+    });
+    
     $scope.paginator = {
       totalItems: 0,
       currentPage: 1,
@@ -23,16 +27,21 @@ angular.module('bswebApp')
       pageChanged: function(){
         Book.search(
           $location.search().q,
-          $stateParams.categories,
           $scope.paginator.currentPage
         ).then(function(result){
+          result.all().getList({
+            categories: $stateParams.categories,
+            page: $scope.paginator.currentPage,
+            with_owner: 'True',
+          })
+        }).then(function(result){
           $scope.paginator.totalItems = result.count;
           $scope.paginator.currentPage = result.page;
-          $scope.data.books = result;
+          $scope.books = result;
         }).then(function(){
           $document.scrollTop(0, 300);
         });
       },
     };
     $scope.paginator.pageChanged();
-  });
+  }]);
