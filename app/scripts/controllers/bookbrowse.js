@@ -2,22 +2,18 @@
 
 /**
  * @ngdoc function
- * @name bswebApp.controller:BookCtrl
+ * @name bswebApp.controller:BookBrowseCtrl
  * @description
- * # BookCtrl
+ * # BookBrowseCtrl
  * Controller of the bswebApp
  */
 angular.module('bswebApp')
-  .controller('BookCtrl', function ($scope, $state, $document, $stateParams, Book, Category) {
+  .controller('BookBrowseCtrl', function ($scope, $document, $stateParams,
+                                    Book, Category) {
+
     $scope.page = {
       title: 'Browse Books Category',
     };
-    
-    $scope.currentState = $state.current.name
-
-    Category.withOwner().then(function(result){
-      $scope.categories = result;
-    });
 
     $scope.paginator = {
       totalItems: 0,
@@ -32,7 +28,7 @@ angular.module('bswebApp')
         }).then(function(result){
           $scope.paginator.totalItems = result.count;
           $scope.paginator.currentPage = result.page;
-          $scope.books = result;
+          $scope.data.books = result;
         }).then(function(){
           $document.scrollTop(0, 300);
         });
