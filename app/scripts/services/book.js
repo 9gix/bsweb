@@ -24,6 +24,7 @@ angular.module('bswebApp')
           }
         );
       },
+      
       all: function(){
         return books;
       },

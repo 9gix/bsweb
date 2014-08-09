@@ -15,7 +15,7 @@
             </button>
             <ul class='dropdown-menu' role='menu'>
               <li ng-repeat='cat in categories'>
-                <a ui-sref='community.search({categories:cat.slug})'>
+                <a ui-sref='{{currentState}}({categories:cat.slug})'>
                   {{ cat.name }}
                 </a>
               </li>

@@ -8,10 +8,12 @@
  * Controller of the bswebApp
  */
 angular.module('bswebApp')
-  .controller('BookCtrl', function ($scope, $document, $stateParams, Book, Category) {
+  .controller('BookCtrl', function ($scope, $state, $document, $stateParams, Book, Category) {
     $scope.page = {
       title: 'Browse Books Category',
     };
+    
+    $scope.currentState = $state.current.name
 
     Category.withOwner().then(function(result){
       $scope.categories = result;

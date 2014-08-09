@@ -9,11 +9,13 @@
  */
 angular.module('bswebApp')
   .controller('SearchCtrl',
-              ['$scope', '$location', '$stateParams', '$document', 'Book', 'Category',
-                  function ($scope, $location, $stateParams, $document, Book, Category) {
+              ['$scope', '$location', '$state', '$stateParams', '$document', 'Book', 'Category',
+                  function ($scope, $location, $state, $stateParams, $document, Book, Category) {
     $scope.page = {
       title: 'Search Result',
     };
+    
+    $scope.currentState = $state.current.name
     
     Category.withOwner().then(function(result){
       $scope.categories = result;
