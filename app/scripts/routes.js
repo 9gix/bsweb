@@ -28,8 +28,8 @@ angular.module('bswebApp').config(function($stateProvider, $urlRouterProvider){
         controller: 'HomeCtrl',
         templateUrl: 'views/main.html',
       });
- 
-      
+
+
     $stateProvider
       .state('about', {
         url: '/about/',
@@ -75,7 +75,7 @@ angular.module('bswebApp').config(function($stateProvider, $urlRouterProvider){
             templateUrl: 'views/book.list.filter.html',
           },
           'booklist': {
-            controller: 'BookCtrl',
+            controller: 'BookBrowseCtrl',
             templateUrl: 'views/book.list.content.html',
           },
         },

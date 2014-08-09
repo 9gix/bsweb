@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name bswebApp.controller:BookCtrl
+ * @name bswebApp.controller:BookBrowseCtrl
  * @description
- * # BookCtrl
+ * # BookBrowseCtrl
  * Controller of the bswebApp
  */
 angular.module('bswebApp')
-  .controller('BookCtrl', function ($scope, $document, $stateParams,
+  .controller('BookBrowseCtrl', function ($scope, $document, $stateParams,
                                     Book, Category) {
 
     $scope.page = {
