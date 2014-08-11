@@ -21,6 +21,11 @@ angular.module('bswebApp')
       getList: function(params){
         return UserBook.getList(params);
       },
+      latest: function(){
+        return UserBook.getList({
+          ordering: '-created_at',
+        });
+      },
     };
   })
   .factory('MyBook', function (Restangular) {
