@@ -20,7 +20,12 @@
           <div class='media'>
             <div class='pull-left'>
               <a ui-sref='community.books.detail({ isbn: book.isbn })'>
-                <img data-src='holder.js/140x140' class='media-object img-thumbnail' holder-fix>
+                <img data-src='holder.js/140x140'
+                     ng-hide='book.thumbnail'
+                     class='media-object img-thumbnail' holder-fix>
+                <img ng-src='{{ book.thumbnail }}'
+                     ng-show='book.thumbnail'
+                     class='media-object img-thumbnail fix-thumbsize'>
               </a>
             </div>
             <div class='media-body'>
