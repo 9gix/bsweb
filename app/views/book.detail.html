@@ -64,38 +64,31 @@
   <header class=''>
     <h2 class=''>Owners</h2>
   </header>
-  <ul class='list-unstyled'>
-    <li ng-repeat='userbook in usersBook'>
-      <div class='col-sm-6'>
-        <div class='panel panel-default'>
-          <div class='panel-body'>
-          <address>
-            <strong>{{ userbook.owner }}</strong>
-            is reachable at
-            <a href='tel:12345678'>
-              <span class='glyphicon glyphicon-phone'></span>
-              12345678
-            </a>
-            <a href='sms:12345678'>
-              <span class='glyphicon glyphicon-envelope'></span>
-              12345678
-            </a>
-            <br />
-            collect your book at: <br />
-            123 abc street<br />
-            happy stare coffee stall<br />
-            singapore, 87654321<br/>
-          </address>
+  <table class='table table-striped'>
+    <thead>
+      <tr>
+        <th>Owner</th>
+        <th>Current borrower</th>
+        <th>Collection Location</th>
+        <th>Availability <span class='glyphicon glyphicon-calendar'></span></th>
+        <th>Request</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat='userbook in usersBook'>
+        <td>
+          {{ userbook.owner }}
+        </td>
+        <td>{{ userbook.current_holder }}</td>
+        <td>Singapore</td>
+        <td>Immidiate</td>
+        <td>
           <button class='btn btn-primary' title='borrow the book'
                   ng-click='requestBook(userbook.id)'>
             Request <span class='glyphicon glyphicon-envelope'></span>
           </button>
-          <button class='btn btn-info'>
-            Calendar <span class='glyphicon glyphicon-calendar'></span>
-          </button>
-          </div>
-        </div>
-      </div>
-    </li>
-  </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </section>
