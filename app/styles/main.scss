@@ -17,7 +17,12 @@ main {
     display: none !important;
 }
 
-.fix-thumbsize {
+.fix-thumbsize-list {
     width: 140px;
     height: 140px;
+}
+
+.fix-thumbsize-detail {
+    width: 240px;
+    height: 240px;
 }

@@ -7,7 +7,12 @@
       <div class='media'>
         <div class='pull-left'>
           <a ui-sref='books.detail({ isbn: book.isbn })'>
-            <img data-src='holder.js/240x240' class='media-object img-thumbnail' holder-fix>
+            <img data-src='holder.js/240x240'
+                 ng-hide='book.thumbnail'
+                 class='media-object img-thumbnail' holder-fix>
+            <img ng-src='{{ book.thumbnail }}'
+                 ng-show='book.thumbnail'
+                 class='media-object img-thumbnail fix-thumbsize-detail'>
           </a>
         </div>
         <div class='media-body'>
